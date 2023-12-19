@@ -6,10 +6,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 3.3 REQUIRED)
 find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
+find_package(box2d CONFIG REQUIRED)
 
 add_executable(NeuroCell main.cpp)
 
 target_link_libraries(NeuroCell sfml-system sfml-network sfml-graphics sfml-window)
 target_link_libraries(NeuroCell OpenGL::GL)
 target_link_libraries(NeuroCell glfw)
-
+target_link_libraries(NeuroCell box2d::box2d)
