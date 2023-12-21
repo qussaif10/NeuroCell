@@ -1,39 +1,37 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class MembraneCreator : MonoBehaviour
 {
     public GameObject phospholipidPrefab;
     public int numberOfPhospholipidsPerLayer = 100;
     public float radius = 5f;
-    public float layerDistance = 0.5f; // The distance between the two layers
+    public float layerDistance = 0.5f;
+    private List<GameObject> _innerPhospholipids = new();
+    private List<GameObject> _outerPhospholipids = new();
 
-    private List<GameObject> phospholipids = new List<GameObject>();
-
-    void Start()
+    private void Start()
     {
         CreateDoubleLayerMembrane();
     }
 
     void CreateDoubleLayerMembrane()
     {
-        float angleStep = 360f / numberOfPhospholipidsPerLayer;
-        for (int i = 0; i < numberOfPhospholipidsPerLayer; i++)
+        var angleStep = 360f / numberOfPhospholipidsPerLayer;
+        for (var i = 0; i < numberOfPhospholipidsPerLayer; i++)
         {
-            // Calculate angle for the current phospholipid
-            float angle = i * angleStep;
+            var angle = i * angleStep;
 
-            // Create outer layer
-            Vector3 outerPosition = PositionForAngle(angle, radius);
-            InstantiateAndRotatePhospholipid(outerPosition, outerPosition.normalized);
+            var outerPosition = PositionForAngle(angle, radius);
+            InstantiateAndRotatePhospholipid(outerPosition, outerPosition.normalized, true);
 
-            // Create inner layer
-            Vector3 innerPosition = PositionForAngle(angle, radius - layerDistance);
-            InstantiateAndRotatePhospholipid(innerPosition, -innerPosition.normalized);
+            var innerPosition = PositionForAngle(angle, radius - layerDistance);
+            InstantiateAndRotatePhospholipid(innerPosition, -innerPosition.normalized, false);
         }
     }
 
-    Vector3 PositionForAngle(float angle, float layerRadius)
+    private static Vector3 PositionForAngle(float angle, float layerRadius)
     {
         return new Vector3(
             Mathf.Cos(angle * Mathf.Deg2Rad),
@@ -42,10 +40,35 @@ public class MembraneCreator : MonoBehaviour
         ) * layerRadius;
     }
 
-    void InstantiateAndRotatePhospholipid(Vector3 position, Vector3 upDirection)
+    private void InstantiateAndRotatePhospholipid(Vector3 position, Vector3 upDirection, bool outerlayer)
     {
-        GameObject phospholipid = Instantiate(phospholipidPrefab, position, Quaternion.identity, transform);
+        var phospholipid = Instantiate(phospholipidPrefab, position, Quaternion.identity, transform);
         phospholipid.transform.up = upDirection;
-        phospholipids.Add(phospholipid);
+        
+        if (outerlayer)
+        {
+            _outerPhospholipids.Add(phospholipid);
+        }
+        else
+        {
+            _innerPhospholipids.Add(phospholipid);
+        }
+    }
+
+    private void AddSpringJointToPhospholipid()
+    {
+        
+        var lipidCount = _innerPhospholipids.Count;
+
+
+        foreach (var lipid in _outerPhospholipids.Concat(_innerPhospholipids))
+        {
+            lipid.AddComponent<SpringJoint>();
+        }
+        
+        for (var i = 0; i < lipidCount; i++)
+        {
+
+        }
     }
 }

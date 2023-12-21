@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73677c7dafd31054c9551d732ec91ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceMagnitude: 0.25
 --- !u!1 &8183474079642900782
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +200,7 @@ GameObject:
   - component: {fileID: 7101071128338978247}
   - component: {fileID: 6806691576204292582}
   - component: {fileID: 2438739195400495740}
+  - component: {fileID: 7682218632201239478}
   m_Layer: 0
   m_Name: phospholipid
   m_TagString: Untagged
@@ -337,6 +339,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5599997
+--- !u!232 &7682218632201239478
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183474079642900782}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 6.605742
+  m_MaxDistanceOnly: 0
 --- !u!1 &8634498916299956871
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,3 +546,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73677c7dafd31054c9551d732ec91ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceMagnitude: 0.25
