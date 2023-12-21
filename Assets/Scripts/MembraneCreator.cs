@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,20 +56,20 @@ public class MembraneCreator : MonoBehaviour
         }
     }
 
-    private void AddSpringJointToPhospholipid()
-    {
-        
-        var lipidCount = _innerPhospholipids.Count;
-
-
-        foreach (var lipid in _outerPhospholipids.Concat(_innerPhospholipids))
-        {
-            lipid.AddComponent<SpringJoint>();
-        }
-        
-        for (var i = 0; i < lipidCount; i++)
-        {
-
-        }
-    }
+    // private void AddSpringJointToPhospholipid()
+    // {
+    //     
+    //     var lipidCount = _innerPhospholipids.Count;
+    //
+    //
+    //     foreach (var lipid in _outerPhospholipids.Concat(_innerPhospholipids))
+    //     {
+    //         lipid.AddComponent<SpringJoint>();
+    //     }
+    //     
+    //     for (var i = 0; i < lipidCount; i++)
+    //     {
+    //         
+    //     }
+    // }
 }
