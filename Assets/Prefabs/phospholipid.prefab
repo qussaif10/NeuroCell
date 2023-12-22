@@ -187,8 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73677c7dafd31054c9551d732ec91ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.5
-  frequency: 1
+  forceMagnitude: 0.1
+  applyForceInterval: 0.5
 --- !u!1 &8183474079642900782
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +360,7 @@ DistanceJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
   m_Distance: 6.605742
-  m_MaxDistanceOnly: 0
+  m_MaxDistanceOnly: 1
 --- !u!114 &224234715354222088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,8 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73677c7dafd31054c9551d732ec91ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.5
-  frequency: 1
+  forceMagnitude: 0.1
+  applyForceInterval: 0.5
 --- !u!1 &8634498916299956871
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,5 +562,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73677c7dafd31054c9551d732ec91ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.5
-  frequency: 1
+  forceMagnitude: 0.1
+  applyForceInterval: 0.5

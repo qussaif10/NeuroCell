@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phospholipidPrefab: {fileID: 8183474079642900782, guid: a6a88b1b3dc70ec47b390b8e9298456d, type: 3}
-  numberOfPhospholipidsPerLayer: 59
-  radius: 3.5
+  numberOfPhospholipidsPerLayer: 63
+  radius: 3.68
   layerDistance: 0.5
 --- !u!4 &1032971894
 Transform:
@@ -314,7 +314,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.291, y: 4.601, z: 0}
-  m_LocalScale: {x: 0.238, y: 0.238, z: 0.238}
+  m_LocalScale: {x: 0.3287414, y: 0.3287414, z: 0.3287414}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

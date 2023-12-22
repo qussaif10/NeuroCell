@@ -9,15 +9,16 @@ public class MembraneCreator : MonoBehaviour
     public int numberOfPhospholipidsPerLayer = 100;
     public float radius = 5f;
     public float layerDistance = 0.5f;
-    private List<GameObject> _innerPhospholipids = new();
-    private List<GameObject> _outerPhospholipids = new();
+    private readonly List<GameObject> _innerPhospholipids = new();
+    private readonly List<GameObject> _outerPhospholipids = new();
 
     private void Start()
     {
         CreateDoubleLayerMembrane();
+        AddSpringJointToPhospholipid();
     }
 
-    void CreateDoubleLayerMembrane()
+    private void CreateDoubleLayerMembrane()
     {
         var angleStep = 360f / numberOfPhospholipidsPerLayer;
         for (var i = 0; i < numberOfPhospholipidsPerLayer; i++)
@@ -56,20 +57,46 @@ public class MembraneCreator : MonoBehaviour
         }
     }
 
-    // private void AddSpringJointToPhospholipid()
-    // {
-    //     
-    //     var lipidCount = _innerPhospholipids.Count;
-    //
-    //
-    //     foreach (var lipid in _outerPhospholipids.Concat(_innerPhospholipids))
-    //     {
-    //         lipid.AddComponent<SpringJoint>();
-    //     }
-    //     
-    //     for (var i = 0; i < lipidCount; i++)
-    //     {
-    //         
-    //     }
-    // }
+    private void AddSpringJointToPhospholipid()
+    {
+        var lipidCount = 0;
+        
+        if (_innerPhospholipids.Count == _outerPhospholipids.Count)
+        {
+            lipidCount = _innerPhospholipids.Count;
+        }
+        
+        foreach (var lipid in _outerPhospholipids)
+        {
+            lipid.AddComponent<SpringJoint2D>();
+            lipid.AddComponent<SpringJoint2D>();
+            
+            lipid.GetComponent<SpringJoint2D>().enableCollision = true;
+            lipid.GetComponent<SpringJoint2D>().autoConfigureConnectedAnchor = true;
+            lipid.GetComponent<SpringJoint2D>().distance = 0f;
+        }
+        
+        foreach (var lipid in _innerPhospholipids)
+        {
+            lipid.AddComponent<SpringJoint2D>();
+            lipid.AddComponent<SpringJoint2D>();
+            lipid.GetComponent<SpringJoint2D>().enableCollision = true;
+            lipid.GetComponent<SpringJoint2D>().autoConfigureConnectedAnchor = true;
+            lipid.GetComponent<SpringJoint2D>().distance = 0f;
+        }
+        
+        for (var i = 0; i < lipidCount; i++)
+        {
+            if (i != lipidCount - 1)
+            {
+                _outerPhospholipids[i].GetComponent<SpringJoint2D>().connectedBody = _outerPhospholipids[i + 1].GetComponent<Rigidbody2D>();
+                _innerPhospholipids[i].GetComponent<SpringJoint2D>().connectedBody = _innerPhospholipids[i + 1].GetComponent<Rigidbody2D>();
+            }
+            else
+            {
+                _outerPhospholipids[i].GetComponent<SpringJoint2D>().connectedBody = _outerPhospholipids[0].GetComponent<Rigidbody2D>();
+                _innerPhospholipids[i].GetComponent<SpringJoint2D>().connectedBody = _innerPhospholipids[0].GetComponent<Rigidbody2D>();
+            }
+        }
+    }
 }
