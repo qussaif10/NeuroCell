@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
-public class MembraneCreator : MonoBehaviour
+using System.Linq;
+
+public class Membrane : MonoBehaviour
 {
     [Header("Phospholipid initialization")]
     public GameObject phospholipidPrefab;
@@ -134,6 +136,19 @@ public class MembraneCreator : MonoBehaviour
         {
             outerSprings[i].connectedBody = _innerPhospholipids[i].GetComponent<SpringJoint2D>().connectedBody;
             innerSprings[i].connectedBody = _outerPhospholipids[i].GetComponent<SpringJoint2D>().connectedBody;
+        }
+    }
+
+    public void KillCell()
+    {
+        foreach (var lipid in _outerPhospholipids.Concat(_innerPhospholipids))
+        {
+            var springs = lipid.GetComponents<SpringJoint2D>();
+            for (int i = 0; i < 3; i++)
+            {
+                springs[i].enabled = false;
+            }
+            lipid.GetComponent<Rigidbody2D>().AddForce(Random.insideUnitCircle.normalized * Random.Range(100f, 500f));
         }
     }
 }
