@@ -1,28 +1,26 @@
-using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
-
 public class MembraneCreator : MonoBehaviour
 {
     [Header("Phospholipid initialization")]
     public GameObject phospholipidPrefab;
+    public GameObject centerRigidBody;
     public int numberOfPhospholipidsPerLayer = 100;
     public float radius = 5f;
     public float layerDistance = 0.5f;
 
     [Header("Springs between adjacent phospholipids")]
-    public float dampeningRatio_0;
-    public float frequency_0 = 1;
+    [Range(0,1)] public float dampeningRatio0;
+    public float frequency0 = 1;
     [Header("Springs between opposite phospholipids")]
-    public float dampeningRatio_1;
-    public float frequency_1 = 1;
+    [Range(0,1)] public float dampeningRatio1;
+    public float frequency1 = 1;
     [Header("Springs between center and phospholipids")]
-    public float dampeningRatio_2;
-    public float frequency_2 = 1;
+    [Range(0,1)] public float dampeningRatio2;
+    public float frequency2 = 1;
 
-    private readonly List<GameObject> _innerPhospholipids = new List<GameObject>();
-    private readonly List<GameObject> _outerPhospholipids = new List<GameObject>();
+    private readonly List<GameObject> _innerPhospholipids = new();
+    private readonly List<GameObject> _outerPhospholipids = new();
 
     private void Start()
     {
@@ -83,12 +81,13 @@ public class MembraneCreator : MonoBehaviour
             var springJoints = _outerPhospholipids[i].GetComponents<SpringJoint2D>();
             outerSprings[i] = springJoints[1];
 
-            springJoints[0].frequency = frequency_0;
-            springJoints[0].dampingRatio = dampeningRatio_0;
-            springJoints[1].frequency = frequency_1;
-            springJoints[1].dampingRatio = dampeningRatio_1;
-            springJoints[2].frequency = frequency_2;
-            springJoints[2].dampingRatio = dampeningRatio_2;
+            springJoints[0].frequency = frequency0;
+            springJoints[0].dampingRatio = dampeningRatio0;
+            springJoints[1].frequency = frequency1;
+            springJoints[1].dampingRatio = dampeningRatio1;
+            springJoints[2].frequency = frequency2;
+            springJoints[2].dampingRatio = dampeningRatio2;
+            springJoints[2].connectedBody = centerRigidBody.GetComponent<Rigidbody2D>();
             
             _outerPhospholipids[i].GetComponent<SpringJoint2D>().enableCollision = true;
             _outerPhospholipids[i].GetComponent<SpringJoint2D>().autoConfigureConnectedAnchor = true;
@@ -103,14 +102,15 @@ public class MembraneCreator : MonoBehaviour
             
             var springJoints = _innerPhospholipids[i].GetComponents<SpringJoint2D>();
             innerSprings[i] = springJoints[1];
-            
-            springJoints[0].frequency = frequency_0;
-            springJoints[0].dampingRatio = dampeningRatio_0;
-            springJoints[1].frequency = frequency_1;
-            springJoints[1].dampingRatio = dampeningRatio_1;
-            springJoints[2].frequency = frequency_2;
-            springJoints[2].dampingRatio = dampeningRatio_2;
-            
+
+            springJoints[0].frequency = frequency0;
+            springJoints[0].dampingRatio = dampeningRatio0;
+            springJoints[1].frequency = frequency1;
+            springJoints[1].dampingRatio = dampeningRatio1;
+            springJoints[2].frequency = frequency2;
+            springJoints[2].dampingRatio = dampeningRatio2;
+            springJoints[2].connectedBody = centerRigidBody.GetComponent<Rigidbody2D>();
+
             _innerPhospholipids[i].GetComponent<SpringJoint2D>().enableCollision = true;
             _innerPhospholipids[i].GetComponent<SpringJoint2D>().autoConfigureConnectedAnchor = true;
             _innerPhospholipids[i].GetComponent<SpringJoint2D>().distance = 0f;

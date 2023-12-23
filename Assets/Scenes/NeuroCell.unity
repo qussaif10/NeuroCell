@@ -153,15 +153,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phospholipidPrefab: {fileID: 8183474079642900782, guid: a6a88b1b3dc70ec47b390b8e9298456d, type: 3}
-  numberOfPhospholipidsPerLayer: 63
-  radius: 3.68
+  centerRigidBody: {fileID: 2014629300}
+  numberOfPhospholipidsPerLayer: 79
+  radius: 4.25
   layerDistance: 0.5
-  dampeningRatio_0: 0
-  frequency_0: 1
-  dampeningRatio_1: 0
-  frequency_1: 1
-  dampeningRatio_2: 0
-  frequency_2: 1
+  dampeningRatio0: 0
+  frequency0: 1
+  dampeningRatio1: 0
+  frequency1: 1
+  dampeningRatio2: 0
+  frequency2: 5.49
 --- !u!4 &1032971894
 Transform:
   m_ObjectHideFlags: 0
@@ -195,7 +196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &1680861881
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -243,7 +244,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.14
+  m_Mass: 13
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -319,12 +320,71 @@ Transform:
   m_GameObject: {fileID: 1680861880}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.291, y: 4.601, z: 0}
-  m_LocalScale: {x: 0.88372266, y: 0.88372266, z: 0.88372266}
+  m_LocalPosition: {x: 0.72, y: 6.85, z: 0}
+  m_LocalScale: {x: 0.57187283, y: 0.57187283, z: 0.57187283}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2014629300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2014629301}
+  - component: {fileID: 2014629302}
+  m_Layer: 0
+  m_Name: CenterRigidbody
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2014629301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014629300}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &2014629302
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014629300}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &2102668168
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,3 +484,4 @@ SceneRoots:
   - {fileID: 2102668171}
   - {fileID: 1032971894}
   - {fileID: 1680861884}
+  - {fileID: 2014629301}
