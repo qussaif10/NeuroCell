@@ -146,7 +146,7 @@ public class Membrane : MonoBehaviour
             var springs = lipid.GetComponents<SpringJoint2D>();
             for (int i = 0; i < 3; i++)
             {
-                springs[i].enabled = false;
+                springs[i].enabled = !springs[i].enabled;
             }
             lipid.GetComponent<Rigidbody2D>().AddForce(Random.insideUnitCircle.normalized * Random.Range(100f, 500f));
         }

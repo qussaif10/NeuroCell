@@ -275,7 +275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &834162687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,8 +369,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1032971894}
   - component: {fileID: 1032971893}
+  - component: {fileID: 1032971895}
   m_Layer: 0
-  m_Name: Membrane
+  m_Name: OrganelleInstantiator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -414,6 +415,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1032971895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032971892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30dd5dfe914553445b7dea6077e9e0ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nucleusSegment: {fileID: 8541250999783797311, guid: fcb31f85524f9944588916e2a678dc0a, type: 3}
+  dna: {fileID: 3188163777616438764, guid: 49a180e18ec10794cb131bbd91b40028, type: 3}
+  centerRigidBody: {fileID: 2014629302}
+  radius: 1
+  numberOfSegments: 25
 --- !u!1 &1508384540
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1851240437
 MonoBehaviour:
   m_ObjectHideFlags: 0
