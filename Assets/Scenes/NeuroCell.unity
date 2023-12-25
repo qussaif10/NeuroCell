@@ -429,9 +429,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nucleusSegment: {fileID: 8541250999783797311, guid: fcb31f85524f9944588916e2a678dc0a, type: 3}
   dna: {fileID: 3188163777616438764, guid: 49a180e18ec10794cb131bbd91b40028, type: 3}
-  centerRigidBody: {fileID: 2014629302}
   radius: 1
   numberOfSegments: 25
+  springiness: 7.28
 --- !u!1 &1508384540
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1851240437
 MonoBehaviour:
   m_ObjectHideFlags: 0
