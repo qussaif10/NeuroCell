@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Nucleus : MonoBehaviour
@@ -75,6 +76,7 @@ public class Nucleus : MonoBehaviour
         var nucleolusSpring = nucleolus.GetComponent<SpringJoint2D>();
         nucleolusSpring.connectedBody = _centerRigidBody;
         nucleolusSpring.frequency = springiness;
+        nucleolusSpring.AddComponent<CircleCollider2D>();
     }
 
     private void CreateDeoxyRibonucleicAcid()
@@ -88,6 +90,7 @@ public class Nucleus : MonoBehaviour
                 Mathf.Cos(angle * Mathf.Deg2Rad) * radiuss - 2,
                 Mathf.Sin(angle * Mathf.Deg2Rad) * radiuss + 1,
                 0);
+            
             var randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
             dnas[i] = Instantiate(dna, position, randomRotation, transform);
             dnas[i].AddComponent<Rigidbody2D>();
@@ -97,6 +100,7 @@ public class Nucleus : MonoBehaviour
             dnas[i].AddComponent<SpringJoint2D>();
             dnas[i].GetComponent<SpringJoint2D>().connectedBody = _centerRigidBody;
             dnas[i].GetComponent<SpringJoint2D>().frequency = springiness;
+            dnas[i].AddComponent<CircleCollider2D>();
         }
     }
 }

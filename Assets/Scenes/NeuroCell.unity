@@ -123,6 +123,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &389098884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 389098886}
+  - component: {fileID: 389098885}
+  m_Layer: 0
+  m_Name: RigidBodyMouseDrag
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &389098885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389098884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0a3bcf47dcac349a0db4f33a095780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  springForce: 10
+--- !u!4 &389098886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389098884}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.4130816, y: 0.8848366, z: -0.52864933}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &771724021
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +416,7 @@ GameObject:
   - component: {fileID: 1032971894}
   - component: {fileID: 1032971893}
   - component: {fileID: 1032971895}
+  - component: {fileID: 1032971896}
   m_Layer: 0
   m_Name: OrganelleInstantiator
   m_TagString: Untagged
@@ -432,6 +479,22 @@ MonoBehaviour:
   radius: 1
   numberOfSegments: 25
   springiness: 7.13
+--- !u!114 &1032971896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032971892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c310ce601a3b95d428113a1ffdb25cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MitochondrionSegment: {fileID: 8541250999783797311, guid: fcb31f85524f9944588916e2a678dc0a, type: 3}
+  DNA: {fileID: 3188163777616438764, guid: 49a180e18ec10794cb131bbd91b40028, type: 3}
+  numberOfSegments: 39
+  scale: 1.88
 --- !u!1 &1508384540
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,3 +902,4 @@ SceneRoots:
   - {fileID: 834162690}
   - {fileID: 1571466072}
   - {fileID: 1851240438}
+  - {fileID: 389098886}
