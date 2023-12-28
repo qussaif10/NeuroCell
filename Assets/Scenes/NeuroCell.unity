@@ -494,7 +494,9 @@ MonoBehaviour:
   MitochondrionSegment: {fileID: 8541250999783797311, guid: fcb31f85524f9944588916e2a678dc0a, type: 3}
   DNA: {fileID: 3188163777616438764, guid: 49a180e18ec10794cb131bbd91b40028, type: 3}
   numberOfSegments: 30
-  scale: 1
+  scale: 2.04
+  xOffset: -1.36
+  yOffset: -2.5
   springiness: 5.53
 --- !u!1 &1508384540
 GameObject:

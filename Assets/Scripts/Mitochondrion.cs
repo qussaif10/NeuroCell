@@ -7,6 +7,8 @@ public class Mitochondrion : MonoBehaviour
     public GameObject DNA;
     public int numberOfSegments;
     public float scale;
+    public float xOffset;
+    public float yOffset;
 
     private GameObject[] segments;
     private Rigidbody2D _centerRigidBody;
@@ -33,45 +35,21 @@ public class Mitochondrion : MonoBehaviour
         for (var i = 0; i < segments.Length; i++)
         {
             var theta = stepAngle * i;
+
+            const float rotationAngle = -35f;
+            var rotation = Quaternion.Euler(0, 0, rotationAngle);
             
             var position = new Vector3(
-                scale * Mathf.Cos(theta) * (Mathf.Sqrt(2) * (Mathf.Cos(2 * theta) + 2) * Mathf.Sin(theta) / 2) - 1.6f,
-                scale * Mathf.Sin(theta) * (Mathf.Sqrt(2) * (Mathf.Cos(2 * theta) + 2) * Mathf.Sin(theta) / 2) - 2.3f,
+                scale * Mathf.Cos(theta) * (Mathf.Sqrt(2) * (Mathf.Cos(2 * theta) + 2) * Mathf.Sin(theta) / 2),
+                scale * Mathf.Sin(theta) * (Mathf.Sqrt(2) * (Mathf.Cos(2 * theta) + 2) * Mathf.Sin(theta) / 2),
                 0);
 
-            segments[i] = Instantiate(MitochondrionSegment, position, Quaternion.identity, transform);
-        }
+            var rotatedPosition = rotation * position;
 
-        // foreach (var segment in segments)
-        // {
-        //     segment.AddComponent<Rigidbody2D>();
-        //     segment.AddComponent<SpringJoint2D>();
-        //     segment.AddComponent<SpringJoint2D>();
-        //     segment.AddComponent<SpringJoint2D>();
-        //     segment.AddComponent<CircleCollider2D>();
-        //     segment.GetComponent<Rigidbody2D>().gravityScale = 0;
-        //     segment.GetComponent<Rigidbody2D>().drag = 1.2f;
-        //     segment.GetComponent<Rigidbody2D>().angularDrag = 0.2f;
-        //     segment.GetComponent<SpringJoint2D>().connectedBody = _centerRigidBody;
-        //     segment.GetComponent<SpringJoint2D>().frequency = springiness;
-        // }
-        //
-        // for (var i = 0; i < segments.Length; i++)
-        // {
-        //     var springs = segments[i].GetComponents<SpringJoint2D>();
-        //     
-        //     if (i == segments.Length - 1)
-        //     {
-        //         springs[1].connectedBody = segments[0].GetComponent<Rigidbody2D>();
-        //         springs[1].frequency = springiness;
-        //     }
-        //     else
-        //     {
-        //         springs[1].connectedBody = segments[i + 1].GetComponent<Rigidbody2D>();
-        //         springs[1].frequency = springiness;
-        //     }
-        //
-        //     springs[2].frequency = springiness;
-        // }
+            rotatedPosition.x += xOffset;
+            rotatedPosition.y += yOffset;
+
+            segments[i] = Instantiate(MitochondrionSegment, rotatedPosition, Quaternion.identity, transform);
+        }
     }
 }
