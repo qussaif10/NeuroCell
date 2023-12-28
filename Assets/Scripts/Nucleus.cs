@@ -8,8 +8,8 @@ public class Nucleus : MonoBehaviour
     public float radius;
     public int numberOfSegments;
     public float springiness;
+    
     private Rigidbody2D _centerRigidBody;
-
     private GameObject[] _segments;
 
     private void Awake()
