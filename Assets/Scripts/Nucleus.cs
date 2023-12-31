@@ -8,6 +8,8 @@ public class Nucleus : MonoBehaviour
     public float radius;
     public int numberOfSegments;
     public float springiness;
+    public float xOffset;
+    public float yOffset;
     
     private Rigidbody2D _centerRigidBody;
     private GameObject[] _segments;
@@ -29,14 +31,14 @@ public class Nucleus : MonoBehaviour
     {
         var angleStep = 360f / numberOfSegments;
         _centerRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
-        _centerRigidBody.transform.position = new Vector3(-2, 1, 0);
+        _centerRigidBody.transform.position = new Vector3(xOffset, yOffset, 0);
         
         for (var i = 0; i < numberOfSegments; i++)
         {
             var angle = angleStep * i;
             var position = new Vector3(
-                Mathf.Cos(angle * Mathf.Deg2Rad) - 2,
-                Mathf.Sin(angle * Mathf.Deg2Rad) + 1,
+                Mathf.Cos(angle * Mathf.Deg2Rad) + xOffset,
+                Mathf.Sin(angle * Mathf.Deg2Rad) + yOffset,
                 0f
             ) * radius;
 
@@ -66,7 +68,7 @@ public class Nucleus : MonoBehaviour
 
     private void CreateNucleolus()
     {
-        var nucleolus = Instantiate(nucleusSegment, new Vector3(-2, 1 , 0), Quaternion.identity, transform);
+        var nucleolus = Instantiate(nucleusSegment, new Vector3(xOffset, yOffset , 0), Quaternion.identity, transform);
         nucleolus.transform.localScale = new Vector3(0.15f, 0.15f, 0);
         nucleolus.AddComponent<Rigidbody2D>();
         nucleolus.AddComponent<SpringJoint2D>();
@@ -87,8 +89,8 @@ public class Nucleus : MonoBehaviour
             var radiuss = 0.65f;
             var angle = 360f / 6 * i;
             var position = new Vector3(
-                Mathf.Cos(angle * Mathf.Deg2Rad) * radiuss - 2,
-                Mathf.Sin(angle * Mathf.Deg2Rad) * radiuss + 1,
+                Mathf.Cos(angle * Mathf.Deg2Rad) * radiuss + xOffset,
+                Mathf.Sin(angle * Mathf.Deg2Rad) * radiuss + yOffset,
                 0);
             
             var randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
