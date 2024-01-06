@@ -10,6 +10,6 @@ public class GolgiApparatus : MonoBehaviour
 
     private void CreateGolgiApparatus()
     {
-        
+        Instantiate(golgiApparatus);
     }
 }

@@ -585,6 +585,7 @@ GameObject:
   - component: {fileID: 1032971893}
   - component: {fileID: 1032971895}
   - component: {fileID: 1032971896}
+  - component: {fileID: 1032971897}
   m_Layer: 0
   m_Name: OrganelleInstantiator
   m_TagString: Untagged
@@ -668,6 +669,19 @@ MonoBehaviour:
   xOffset: -1.76
   yOffset: -1.77
   springiness: 6.37
+--- !u!114 &1032971897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032971892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46f7382b0125bb4884c0323683cff62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  golgiApparatus: {fileID: 4385275327898351504, guid: 35de94d1c0c4e13429a398893befc335, type: 3}
 --- !u!1 &1242199811
 GameObject:
   m_ObjectHideFlags: 0
