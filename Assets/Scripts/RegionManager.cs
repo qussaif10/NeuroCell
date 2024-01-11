@@ -1,25 +1,44 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RegionManager : MonoBehaviour
 {
-    public Collider2D[] regionColliders;
+    public GameObject[] regionsArray;
+    private static Dictionary<Region, Collider2D> regionCollidersDictionary = new();
 
-    public Collider2D GetCollider(Region region)
+    private void Start()
     {
-        int index = (int)region;
-        if (index >= 0 && index < regionColliders.Length)
+        int regionIndex = 0;
+        foreach (var regionGameObject in regionsArray)
         {
-            return regionColliders[index];
+            var collador = regionGameObject.GetComponent<Collider2D>();
+            if (collador != null)
+            {
+                var region = (Region)regionIndex;
+                regionCollidersDictionary.Add(region, collador);
+            }
+
+            regionIndex++;
         }
-        else
+    }
+    
+    public static Region GetRegionOfMolecule(GameObject obj)
+    {
+        var objPosition = obj.transform.position;
+        foreach (var region in regionCollidersDictionary)
         {
-            Debug.LogError("Region index out of range: " + index);
-            return null;
+            if (region.Value.OverlapPoint(objPosition))
+            {
+                return region.Key;
+            }
         }
+
+        return Region.NoRegion;
     }
 }
 
 public enum Region
 {
+    NoRegion,
     Mitochondrion
 }

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: ATP
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: b9d132184a6bbd44fbac11928b2c2f6f, type: 3}
-  type: 2
+  moleculeType: 2
+  prefab: {fileID: 3042533970458900764, guid: 6f605d97f9e7ea14da31aefe5d95dd9e, type: 3}

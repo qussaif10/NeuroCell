@@ -4,7 +4,8 @@ using UnityEngine;
 public class Molecule : ScriptableObject
 {
     public Sprite sprite;
-    public MoleculeType type;
+    public MoleculeType moleculeType;
+    public GameObject prefab;
 }
 
 public enum MoleculeType
