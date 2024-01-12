@@ -14,13 +14,14 @@ public class MoleculeManager : MonoBehaviour
         }
     }
 
-    public static GameObject SpawnMolecule(Molecule molecule, Region region)
-    { 
-        return null;
+    public static GameObject InstantiateMolecule(Molecule molecule, Region region)
+    {
+        var position = RegionManager.GetRandomPositionInRegion(region);
+        return Instantiate(molecule.prefab, position, Quaternion.identity);
     }
 
-    public static Region CheckMoleculeRegion(GameObject molecule)
+    public static Region GetMoleculeRegion(GameObject molecule)
     {
-        return Region.NoRegion;
+        return RegionManager.GetRegionOfMolecule(molecule);
     }
 }
