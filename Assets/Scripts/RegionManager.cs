@@ -21,11 +21,10 @@ public class RegionManager : MonoBehaviour
             regionIndex++;
         }
 
-        // Log the dictionary values
-        foreach (KeyValuePair<Region, Collider2D> entry in regionCollidersDictionary)
-        {
-            Debug.Log($"Key: {entry.Key}, Value: {entry.Value}");
-        }
+        // foreach (KeyValuePair<Region, Collider2D> entry in regionCollidersDictionary)
+        // {
+        //     Debug.Log($"Key: {entry.Key}, Value: {entry.Value}");
+        // }
     }
 
     public static Region GetRegionOfMolecule(GameObject obj)
@@ -82,5 +81,11 @@ public class RegionManager : MonoBehaviour
 public enum Region
 {
     NoRegion,
-    Mitochondrion
+    Mitochondrion,
+    Nucleus,
+    Nucleolus,
+    EndoplasmicRough,
+    EndoplasmicSmooth,
+    GolgiIn,
+    GolgiOut
 }

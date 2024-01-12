@@ -16,8 +16,7 @@ public class MoleculeManager : MonoBehaviour
 
     public static GameObject InstantiateMolecule(Molecule molecule, Region region)
     {
-        var position = RegionManager.GetRandomPositionInRegion(region);
-        return Instantiate(molecule.prefab, position, Quaternion.identity);
+        return Instantiate(molecule.prefab, RegionManager.GetRandomPositionInRegion(region), Quaternion.identity);
     }
 
     public static Region GetMoleculeRegion(GameObject molecule)
