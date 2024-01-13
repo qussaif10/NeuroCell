@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpriteSwitcher : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class SpriteSwitcher : MonoBehaviour
     public Sprite zoomedInSprite;
     public Sprite zoomedOutSprite;
     public Camera mainCamera;
-    public CircleCollider2D collider2D;
+    [FormerlySerializedAs("collider2D")] public CircleCollider2D collader2D;
 
     public float zoomThreshold = 5f;
     public float zoomedOutScaleFactor = 0.2f;
@@ -26,13 +27,13 @@ public class SpriteSwitcher : MonoBehaviour
         {
             spriteRenderer.sprite = zoomedInSprite;
             spriteRenderer.transform.localScale = Vector3.one * zoomedInScaleFactor;
-            collider2D.radius = zoomedInRadius;
+            collader2D.radius = zoomedInRadius;
         }
         else
         {
             spriteRenderer.sprite = zoomedOutSprite;
             spriteRenderer.transform.localScale = Vector3.one * zoomedOutScaleFactor;
-            collider2D.radius = zoomedOutRadius;
+            collader2D.radius = zoomedOutRadius;
         }
     }
 }
