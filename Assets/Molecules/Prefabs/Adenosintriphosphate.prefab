@@ -103,7 +103,7 @@ MonoBehaviour:
   zoomedInSprite: {fileID: 21300000, guid: b9d132184a6bbd44fbac11928b2c2f6f, type: 3}
   zoomedOutSprite: {fileID: 21300000, guid: 7b0f5dcab4f2c1949b3976aaef14e76e, type: 3}
   mainCamera: {fileID: 0}
-  collider2D: {fileID: 2264518840472293456}
+  collader2D: {fileID: 2264518840472293456}
   zoomThreshold: 1.36
   zoomedOutScaleFactor: 0.025
   zoomedInScaleFactor: 0.14

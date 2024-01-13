@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2134e978c31ef24449d820270bba4a4d, type: 3}
-  m_Name: ATP
+  m_Name: Ribosome
   m_EditorClassIdentifier: 
-  moleculeType: 2
-  prefab: {fileID: 3042533970458900764, guid: 09e94453283ba0b6294293770bf74b01, type: 3}
+  moleculeType: 1
+  prefab: {fileID: 8726408756456805803, guid: b3328573724cf91e4942ec660e2b0bbc, type: 3}
