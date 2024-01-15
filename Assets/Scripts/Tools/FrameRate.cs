@@ -1,21 +1,23 @@
-using System;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class FrameRate : MonoBehaviour
+namespace Tools
 {
-    public TextMeshProUGUI framerateText;
-    private float deltaTime = 0.0f;
-
-    private void Start()
+    public class FrameRate : MonoBehaviour
     {
-        Application.targetFrameRate = -1;
-    }
+        public TextMeshProUGUI framerateText;
+        private float deltaTime = 0.0f;
 
-    private void Update()
-    {
-        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-        var fps = 1.0f / deltaTime;
-        framerateText.text = "FPS: " + fps.ToString("F2");
+        private void Start()
+        {
+            Application.targetFrameRate = -1;
+        }
+
+        private void Update()
+        {
+            deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+            var fps = 1.0f / deltaTime;
+            framerateText.text = "FPS: " + fps.ToString("F2");
+        }
     }
 }

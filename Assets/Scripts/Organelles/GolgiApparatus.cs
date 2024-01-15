@@ -1,15 +1,18 @@
 using UnityEngine;
 
-public class GolgiApparatus : MonoBehaviour
+namespace Organelles
 {
-    public GameObject golgiApparatus;
-    private void Start()
+    public class GolgiApparatus : MonoBehaviour
     {
-       CreateGolgiApparatus(); 
-    }
+        public GameObject golgiApparatus;
+        private void Start()
+        {
+            CreateGolgiApparatus(); 
+        }
 
-    private void CreateGolgiApparatus()
-    {
-        Instantiate(golgiApparatus);
+        private void CreateGolgiApparatus()
+        {
+            Instantiate(golgiApparatus);
+        }
     }
 }

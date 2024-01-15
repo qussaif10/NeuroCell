@@ -1,14 +1,17 @@
 using UnityEngine;
 
-public class EnableOnAwake : MonoBehaviour
+namespace Tools
 {
-    public GameObject[] objects;
-
-    private void Awake()
+    public class EnableOnAwake : MonoBehaviour
     {
-        foreach (var o in objects)
+        public GameObject[] objects;
+
+        private void Awake()
         {
-            o.SetActive(true);
+            foreach (var o in objects)
+            {
+                o.SetActive(true);
+            }
         }
     }
 }
