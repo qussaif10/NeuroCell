@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3800755}
   - component: {fileID: 3800756}
+  - component: {fileID: 3800757}
   m_Layer: 0
   m_Name: Mitochondrion Region
   m_TagString: Untagged
@@ -320,6 +321,18 @@ PolygonCollider2D:
       - {x: 1.0042064, y: 0.2778697}
       - {x: 0.9510565, y: 0.30901712}
   m_UseDelaunayMesh: 0
+--- !u!114 &3800757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f095f7e5d4d8c0548a8ac648ebf29e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &228426688
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 406310203}
   - component: {fileID: 406310204}
+  - component: {fileID: 406310205}
   m_Layer: 0
   m_Name: Nucleolus Region
   m_TagString: Untagged
@@ -754,6 +768,18 @@ PolygonCollider2D:
       - {x: 0.33204508, y: 0.00095009804}
       - {x: 0.36739838, y: 0.2328878}
   m_UseDelaunayMesh: 0
+--- !u!114 &406310205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406310202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2678f48194cae6d48a2c4b167da1b7cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &494311657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,6 +1396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1190737170}
   - component: {fileID: 1190737171}
+  - component: {fileID: 1190737172}
   m_Layer: 0
   m_Name: Endoplasmic Reticulum Smooth Region
   m_TagString: Untagged
@@ -1450,6 +1477,18 @@ PolygonCollider2D:
       - {x: 0.1875366, y: -0.30870593}
       - {x: 0.3688764, y: 0.063409865}
   m_UseDelaunayMesh: 0
+--- !u!114 &1190737172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190737169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4babd16fc2d9cac4db194ba0143cb505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1242199811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,6 +1623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1512159211}
   - component: {fileID: 1512159212}
+  - component: {fileID: 1512159213}
   m_Layer: 0
   m_Name: Golgi Input Region
   m_TagString: Untagged
@@ -1664,6 +1704,18 @@ PolygonCollider2D:
       - {x: 1.1896722, y: -0.050550923}
       - {x: 1.2287624, y: 0.26141042}
   m_UseDelaunayMesh: 0
+--- !u!114 &1512159213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512159210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f0308357c9683046addbf34b0c2d330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1571466069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,6 +1794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1626390669}
   - component: {fileID: 1626390670}
+  - component: {fileID: 1626390671}
   m_Layer: 0
   m_Name: Golgi Output Region
   m_TagString: Untagged
@@ -1822,6 +1875,18 @@ PolygonCollider2D:
       - {x: 0.5689132, y: 0.11239828}
       - {x: 0.646801, y: 0.22261292}
   m_UseDelaunayMesh: 0
+--- !u!114 &1626390671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626390668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4a9cac96f6fb1498e3eed6561e8b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1791178622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,6 +1897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1791178623}
   - component: {fileID: 1791178624}
+  - component: {fileID: 1791178625}
   m_Layer: 0
   m_Name: Nucleus Region
   m_TagString: Untagged
@@ -1929,6 +1995,18 @@ PolygonCollider2D:
       - {x: 0.26833797, y: 0.35104585}
       - {x: 0.08176029, y: 0.44912595}
   m_UseDelaunayMesh: 0
+--- !u!114 &1791178625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791178622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a70d7cdfb4dd73d4a9fc645c6bf8e719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1851240436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2097,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1969214822}
   - component: {fileID: 1969214823}
+  - component: {fileID: 1969214824}
   m_Layer: 0
   m_Name: Endoplasmic Reticulum Rough Region
   m_TagString: Untagged
@@ -2139,6 +2218,18 @@ PolygonCollider2D:
       - {x: -0.00056660175, y: 0.48172832}
       - {x: -0.0084306, y: 0.6780507}
   m_UseDelaunayMesh: 0
+--- !u!114 &1969214824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969214821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec82709831c3e8145811c54cdf4a3d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1985614566
 GameObject:
   m_ObjectHideFlags: 0
