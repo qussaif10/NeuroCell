@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2134e978c31ef24449d820270bba4a4d, type: 3}
-  m_Name: ATP
+  m_Name: Glucose
   m_EditorClassIdentifier: 
-  moleculeType: 0
-  prefab: {fileID: 3042533970458900764, guid: 09e94453283ba0b6294293770bf74b01, type: 3}
+  moleculeType: 2
+  prefab: {fileID: 2882139528153367575, guid: c714681d5a7095a4ea8327447a22c304, type: 3}

@@ -20,11 +20,6 @@ public class RegionManager : MonoBehaviour
 
             regionIndex++;
         }
-
-        // foreach (KeyValuePair<Region, Collider2D> entry in regionCollidersDictionary)
-        // {
-        //     Debug.Log($"Key: {entry.Key}, Value: {entry.Value}");
-        // }
     }
 
     public static Region GetRegionOfMolecule(GameObject obj)

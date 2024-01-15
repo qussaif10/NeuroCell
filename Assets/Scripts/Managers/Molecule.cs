@@ -11,4 +11,5 @@ public enum MoleculeType
 {
     ATP,
     Ribosome,
+    Glucose
 }
