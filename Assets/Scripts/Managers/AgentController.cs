@@ -1,3 +1,4 @@
+using System;
 using Collidables;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
@@ -41,18 +42,29 @@ namespace Managers
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            var collidable = other.gameObject.GetComponent<ICollidable>().GetType();
-            
-            // if ()
-            // {
-            //     SetReward(1f);
-            //     EndEpisode();
-            // }
-            // else
-            // {
-            //     SetReward(-1f);
-            //     EndEpisode();
-            // }
+            var collidable = other.gameObject.GetComponent<ICollidable>().Type;
+
+            switch (collidable)
+            {
+                case CollidableType.Nucleus:
+                    break;
+                case CollidableType.Nucleolus:
+                    break;
+                case CollidableType.Mitochondrion:
+                    break;
+                case CollidableType.GolgiIn:
+                    break;
+                case CollidableType.GolgiOut:
+                    break;
+                case CollidableType.Phospholipid:
+                    break;
+                case CollidableType.SmoothEr:
+                    break;
+                case CollidableType.RoughEr:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

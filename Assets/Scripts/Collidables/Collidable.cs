@@ -2,7 +2,7 @@ namespace Collidables
 {
     public interface ICollidable
     {
-        CollidableType Type { get; }    
+        CollidableType Type { get; }
     }
 
     public enum CollidableType
