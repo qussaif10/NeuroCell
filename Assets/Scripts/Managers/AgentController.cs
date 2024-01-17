@@ -3,6 +3,7 @@ using Collidables;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Managers
@@ -64,6 +65,16 @@ namespace Managers
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void HandleMitochondrion(GameObject molecule)
+        {
+            switch (molecule.tag)
+            {
+                case "Glucose":
+                    MoleculeManager.Instance.ConvertMolecule(molecule, MoleculeManager._moleculeTemplatesDictionary["ATP"], 1f);
+                    break;
             }
         }
     }

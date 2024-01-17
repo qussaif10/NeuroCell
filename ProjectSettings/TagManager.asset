@@ -6,6 +6,9 @@ TagManager:
   tags:
   - tail
   - wall
+  - ATP
+  - Glucose
+  - Ribosome
   layers:
   - Default
   - TransparentFX
