@@ -18,6 +18,11 @@ namespace Managers
             transform.localPosition = Vector3.zero;
         }
 
+        private void Update()
+        {
+            Debug.Log(MoleculeManager.Instance.GetMoleculeRegion(gameObject));
+        }
+
         public override void CollectObservations(VectorSensor sensor)
         {
             var position = transform.localPosition;
@@ -54,6 +59,7 @@ namespace Managers
                 case CollidableType.Mitochondrion:
                     break;
                 case CollidableType.GolgiIn:
+                    HandleMitochondrion();
                     break;
                 case CollidableType.GolgiOut:
                     break;
@@ -68,12 +74,13 @@ namespace Managers
             }
         }
 
-        private void HandleMitochondrion(GameObject molecule)
+        private void HandleMitochondrion()
         {
-            switch (molecule.tag)
+            switch (gameObject.tag)
             {
                 case "Glucose":
-                    MoleculeManager.Instance.ConvertMolecule(molecule, MoleculeManager._moleculeTemplatesDictionary["ATP"], 1f);
+                    MoleculeManager.Instance.ConvertMolecule(gameObject,
+                        MoleculeManager._moleculeTemplatesDictionary["ATP"], 1f);
                     break;
             }
         }
