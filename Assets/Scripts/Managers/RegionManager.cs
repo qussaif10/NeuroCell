@@ -25,18 +25,16 @@ namespace Managers
                 regionIndex++;
             }
         }
-
+        
         public static Region GetRegionOfMolecule(GameObject obj)
         {
-            var objPosition = obj.transform.position;
             foreach (var region in regionCollidersDictionary)
             {
-                if (region.Value.OverlapPoint(objPosition))
+                if (obj.GetComponent<Collider2D>().IsTouching(region.Value))
                 {
                     return region.Key;
                 }
             }
-
             return Region.NoRegion;
         }
 
