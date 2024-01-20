@@ -29,21 +29,8 @@ namespace Managers
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _targetRigidbody = target.GetComponent<Rigidbody2D>();
             _collider2D = GetComponent<Collider2D>();
-            ChangeDirection();
         }
-
-        private void Update()
-        {
-            _timeSinceLastDirectionChange += Time.deltaTime;
-    
-            if (_timeSinceLastDirectionChange >= ChangeDirectionInterval) {
-                ChangeDirection();
-                _timeSinceLastDirectionChange = 0.0f;
-            }
-
-            MoveMolecule();
-        }
-
+        
         public override void OnEpisodeBegin()
         {
             transform.position = GetRandomTargetInCircle(-3.86f);
@@ -135,31 +122,6 @@ namespace Managers
             Debug.LogWarning("Could not find a non-overlapping point within 500 attempts, defaulting to origin.");
             return Vector2.zero;
             
-        }
-        
-        private void ChangeDirection() {
-            _randomDirection = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
-            ValidateDirection();
-        }
-
-        private void MoveMolecule() {
-            Vector2 newPosition = _rigidbody2D.position + _randomDirection * Speed * Time.deltaTime;
-            if (IsWithinBounds(newPosition)) {
-                _rigidbody2D.MovePosition(newPosition);
-            } else {
-                ChangeDirection();
-            }
-        }
-
-        private bool IsWithinBounds(Vector2 position) {
-            return position.sqrMagnitude <= _movementRadius * _movementRadius;
-        }
-
-        private void ValidateDirection() {
-            Vector2 testPosition = _rigidbody2D.position + _randomDirection * Speed;
-            if (!IsWithinBounds(testPosition)) {
-                _randomDirection = -_randomDirection;
-            }
         }
     }
 
