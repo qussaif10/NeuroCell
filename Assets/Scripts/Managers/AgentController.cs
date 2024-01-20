@@ -13,24 +13,30 @@ namespace Managers
         public float speedFactor;
         public LayerMask layers;
         public GameObject target;
+        public LayerMask collisionLayers;
+        public LayerMask repellableLayer;
 
         private Rigidbody2D _targetRigidbody;
-        // private State _currentState = State.Active;
+        private State _currentState = State.Active;
         private Rigidbody2D _rigidbody2D;
         private Collider2D _collider2D;
-        private Vector2 _randomDirection;
-        private const float ChangeDirectionInterval = 0.5f;
-        private float _timeSinceLastDirectionChange;
-        private const float Speed = 0.5f;
-        private float _movementRadius = 4.0f;
-
+        private float currentAngle;
+        private Collider2D _targetCollider2D;
+        
         private void Start()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _targetRigidbody = target.GetComponent<Rigidbody2D>();
             _collider2D = GetComponent<Collider2D>();
+            _targetCollider2D = target.GetComponent<Collider2D>();
         }
-        
+
+        private void Update()
+        {
+            Wander(_targetRigidbody, ref currentAngle, 0.25f, 2f);
+            RepelObjects(gameObject, 2f, 500f);
+        }
+
         public override void OnEpisodeBegin()
         {
             transform.position = GetRandomTargetInCircle(-3.86f);
@@ -44,7 +50,7 @@ namespace Managers
             sensor.AddObservation(new Vector2(position.x, position.y));
             sensor.AddObservation(new Vector2(targetPosition.x, targetPosition.y));
         }
-
+    
         public override void OnActionReceived(ActionBuffers actions)
         {
             var forceX = actions.ContinuousActions[0];
@@ -102,7 +108,7 @@ namespace Managers
                     break;
             }
 
-            EndEpisode();
+            // EndEpisode();
         }
 
         private static Vector2 GetRandomTargetInCircle(float r)
@@ -112,7 +118,7 @@ namespace Managers
             {
                 var randomPoint = Random.insideUnitCircle * r;
                 var collider = Physics2D.OverlapPoint(randomPoint);
-
+                
                 if (collider == null)
                 {
                     return randomPoint;
@@ -122,6 +128,42 @@ namespace Managers
             Debug.LogWarning("Could not find a non-overlapping point within 500 attempts, defaulting to origin.");
             return Vector2.zero;
             
+        }
+        
+        private void Wander(Rigidbody2D rb, ref float currentAngle, float speed, float angleChangeRange)
+        {
+            if (rb.IsTouchingLayers() && !rb.IsTouchingLayers(collisionLayers))
+            {
+                currentAngle += Random.Range(180, 200);
+            }
+            else
+            {
+                currentAngle += Random.Range(-angleChangeRange, angleChangeRange);
+            }
+
+            var angleInRadians = currentAngle * Mathf.Deg2Rad;
+            var direction = new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians)).normalized;
+            rb.velocity = direction * Random.Range(speed / 2, speed);
+        }
+
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.GetComponent<Collider2D>() != _targetCollider2D) return;
+            AddReward(1f);
+            EndEpisode();
+        }
+        
+        private void RepelObjects(GameObject source, float repelRange, float repelForce)
+        {
+            var hitColliders = Physics2D.OverlapCircleAll(source.transform.position, repelRange, repellableLayer); ;
+            foreach (var hitCollider in hitColliders)
+            {
+                var rb = hitCollider.GetComponent<Rigidbody2D>();
+                if (rb == null) continue;
+                var direction = hitCollider.transform.position - source.transform.position;
+                rb.AddForce(direction.normalized * repelForce, ForceMode2D.Impulse);
+            }
         }
     }
 

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 3800755}
   - component: {fileID: 3800756}
   - component: {fileID: 3800757}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mitochondrion Region
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 406310203}
   - component: {fileID: 406310204}
   - component: {fileID: 406310205}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Nucleolus Region
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1397,7 +1397,7 @@ GameObject:
   - component: {fileID: 1190737170}
   - component: {fileID: 1190737171}
   - component: {fileID: 1190737172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Endoplasmic Reticulum Smooth Region
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1548,7 +1548,7 @@ GameObject:
   - component: {fileID: 1286055595}
   - component: {fileID: 1286055597}
   - component: {fileID: 1286055598}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1772,7 +1772,7 @@ GameObject:
   - component: {fileID: 1512159211}
   - component: {fileID: 1512159212}
   - component: {fileID: 1512159213}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Golgi Input Region
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1943,7 +1943,7 @@ GameObject:
   - component: {fileID: 1626390669}
   - component: {fileID: 1626390670}
   - component: {fileID: 1626390671}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Golgi Output Region
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2046,7 +2046,7 @@ GameObject:
   - component: {fileID: 1791178623}
   - component: {fileID: 1791178624}
   - component: {fileID: 1791178625}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Nucleus Region
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2246,7 +2246,7 @@ GameObject:
   - component: {fileID: 1969214822}
   - component: {fileID: 1969214823}
   - component: {fileID: 1969214824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Endoplasmic Reticulum Rough Region
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2605,7 +2605,7 @@ GameObject:
   - component: {fileID: 8456222803103192623}
   - component: {fileID: 8456222803103192622}
   - component: {fileID: 8456222803103192624}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glucose
   m_TagString: Glucose
   m_Icon: {fileID: 0}
@@ -2756,15 +2756,18 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 6000
   speedFactor: 142.78
   layers:
     serializedVersion: 2
     m_Bits: 72
-  raycastlayer:
-    serializedVersion: 2
-    m_Bits: 4
   target: {fileID: 1286055594}
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  repellableLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &8456222803103192623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2782,15 +2785,15 @@ MonoBehaviour:
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
-      BranchSizes: 01000000
-    VectorActionSize: 
+      BranchSizes: 
+    VectorActionSize: 02000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 1
-  m_BehaviorName: MolacoleBeh
+  m_BehaviorName: MoleculeBehaviour
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
