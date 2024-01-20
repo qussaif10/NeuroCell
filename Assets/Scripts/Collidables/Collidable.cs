@@ -16,6 +16,7 @@ namespace Collidables
         GolgiOut,
         Phospholipid,
         SmoothEr,
-        RoughEr
+        RoughEr,
+        Wall
     }
 }

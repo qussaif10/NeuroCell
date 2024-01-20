@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1705647383",
+        "python_version": "3.9.11 (tags/v3.9.11:2de452f, Mar 16 2022, 14:33:45) [MSC v.1929 64 bit (AMD64)]",
+        "command_line_arguments": "D:\\NeuroCellSharp\\venv\\Scripts\\mlagents-learn --run-id=w --force",
+        "mlagents_version": "0.30.0",
+        "mlagents_envs_version": "0.30.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1705647402"
+    },
+    "total": 18.5543269,
+    "count": 1,
+    "self": 0.005182800000000043,
+    "children": {
+        "run_training.setup": {
+            "total": 0.04480339999999994,
+            "count": 1,
+            "self": 0.04480339999999994
+        },
+        "TrainerController.start_learning": {
+            "total": 18.5043407,
+            "count": 1,
+            "self": 0.00036029999999342976,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 18.503970900000002,
+                    "count": 1,
+                    "self": 18.503970900000002
+                },
+                "trainer_threads": {
+                    "total": 8.000000022434506e-07,
+                    "count": 1,
+                    "self": 8.000000022434506e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 8.700000002193065e-06,
+                    "count": 1,
+                    "self": 8.700000002193065e-06
+                }
+            }
+        }
+    }
+}

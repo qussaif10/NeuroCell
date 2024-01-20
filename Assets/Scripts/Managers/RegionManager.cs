@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -25,7 +24,7 @@ namespace Managers
                 regionIndex++;
             }
         }
-        
+
         public static Region GetRegionOfMolecule(GameObject obj)
         {
             foreach (var region in regionCollidersDictionary)
@@ -40,7 +39,7 @@ namespace Managers
 
         public static Vector2 GetRandomPositionInRegion(Region region)
         {
-            if (regionCollidersDictionary.TryGetValue(region, out Collider2D collider))
+            if (regionCollidersDictionary.TryGetValue(region, out var collider))
             {
                 var bounds = collider.bounds;
                 const int maxAttempts = 100;
@@ -51,20 +50,14 @@ namespace Managers
                         Random.Range(bounds.min.y, bounds.max.y)
                     );
 
-                    // Convert to local space if the collider is not a trigger
-                    if (!collider.isTrigger)
-                    {
-                        randomPosition = collider.transform.InverseTransformPoint(randomPosition);
-                    }
-
                     if (collider.OverlapPoint(randomPosition))
                     {
                         // Return the position in world space
-                        return collider.transform.TransformPoint(randomPosition);
+                        return randomPosition;
                     }
                 }
-
-                Debug.LogWarning("Could not find a random position in region " + region + " within " + maxAttempts + " attempts.");
+                Debug.LogWarning("Could not find a random position in region " + region + " within " + maxAttempts + " attempts. center position is given");
+                return bounds.center;
             }
             else
             {

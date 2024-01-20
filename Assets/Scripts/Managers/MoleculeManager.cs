@@ -35,6 +35,12 @@ namespace Managers
             StartCoroutine(DelayedInstantiateMolecule(type, region, delay));
         }
         
+        public void ConvertMolecule(GameObject molecule, Molecule type, float delay, Region otherRegion)
+        {
+            Destroy(molecule);
+            StartCoroutine(DelayedInstantiateMolecule(type, otherRegion, delay));
+        }
+        
         private IEnumerator DelayedInstantiateMolecule(Molecule type, Region region, float delay)
         {
             yield return new WaitForSeconds(delay);
