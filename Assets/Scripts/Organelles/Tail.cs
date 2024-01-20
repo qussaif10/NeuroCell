@@ -33,11 +33,11 @@ namespace Organelles
                 // Apply a varying force at regular intervals
                 Vector2 randomDirection = Random.insideUnitCircle.normalized;
                 float randomMagnitude = Random.Range(minForceMagnitude, maxForceMagnitude);
-                _rb.AddForce(randomDirection * randomMagnitude, ForceMode2D.Impulse);
+                _rb.AddForce(randomDirection * randomMagnitude * Time.deltaTime, ForceMode2D.Impulse);
 
                 // Gradually rotate the tail to simulate fluidity
                 float randomTorque = Random.Range(-maxTorque, maxTorque);
-                _rb.AddTorque(randomTorque);
+                _rb.AddTorque(randomTorque * Time.deltaTime);
 
                 // Wait for the specified interval before applying force again
                 yield return new WaitForSeconds(applyForceInterval);

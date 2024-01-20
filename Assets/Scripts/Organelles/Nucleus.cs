@@ -71,6 +71,7 @@ namespace Organelles
         private void CreateNucleolus()
         {
             var nucleolus = Instantiate(nucleusSegment, new Vector3(xOffset, yOffset , 0), Quaternion.identity, transform);
+            nucleolus.layer = LayerMask.NameToLayer("Default");
             nucleolus.transform.localScale = new Vector3(0.15f, 0.15f, 0);
             nucleolus.AddComponent<Rigidbody2D>();
             nucleolus.AddComponent<SpringJoint2D>();

@@ -34,7 +34,7 @@ namespace Managers
         private void Update()
         {
             Wander(_targetRigidbody, ref currentAngle, 0.25f, 2f);
-            RepelObjects(gameObject, 2f, 500f);
+            RepelObjects(gameObject, 0.1f, 0.3f);
         }
 
         public override void OnEpisodeBegin()
@@ -143,7 +143,7 @@ namespace Managers
 
             var angleInRadians = currentAngle * Mathf.Deg2Rad;
             var direction = new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians)).normalized;
-            rb.velocity = direction * Random.Range(speed / 2, speed);
+            rb.velocity = direction * Random.Range(speed / 2, speed) * Time.deltaTime;
         }
 
 
