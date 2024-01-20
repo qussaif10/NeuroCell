@@ -388,6 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 267041897}
   - component: {fileID: 267041898}
+  - component: {fileID: 267041899}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: wall
@@ -455,6 +456,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &267041899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267041896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5393143c0734961818845e1fefa002e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &280334440
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 381710642}
   - component: {fileID: 381710643}
+  - component: {fileID: 381710644}
   m_Layer: 0
   m_Name: Square
   m_TagString: wall
@@ -616,6 +630,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &381710644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381710641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5393143c0734961818845e1fefa002e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &389098884
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 505268020}
   - component: {fileID: 505268021}
+  - component: {fileID: 505268022}
   m_Layer: 0
   m_Name: Square (3)
   m_TagString: wall
@@ -991,6 +1018,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &505268022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505268019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5393143c0734961818845e1fefa002e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &512520350
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,6 +1733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1420516567}
   - component: {fileID: 1420516568}
+  - component: {fileID: 1420516569}
   m_Layer: 0
   m_Name: Square (2)
   m_TagString: wall
@@ -1761,6 +1801,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1420516569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420516566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5393143c0734961818845e1fefa002e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1512159210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,7 +2844,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 1
   m_BehaviorName: MoleculeBehaviour
   TeamId: 0
   m_UseChildSensors: 1

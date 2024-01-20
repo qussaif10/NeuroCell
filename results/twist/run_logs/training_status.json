@@ -1,26 +1,4 @@
 {
-    "MoleculeBehaviour": {
-        "checkpoints": [
-            {
-                "steps": 1456,
-                "file_path": "results\\twist\\MoleculeBehaviour\\MoleculeBehaviour-1456.onnx",
-                "reward": 0.0,
-                "creation_time": 1705745839.4399424,
-                "auxillary_file_paths": [
-                    "results\\twist\\MoleculeBehaviour\\MoleculeBehaviour-1456.pt"
-                ]
-            }
-        ],
-        "final_checkpoint": {
-            "steps": 1456,
-            "file_path": "results\\twist\\MoleculeBehaviour.onnx",
-            "reward": 0.0,
-            "creation_time": 1705745839.4399424,
-            "auxillary_file_paths": [
-                "results\\twist\\MoleculeBehaviour\\MoleculeBehaviour-1456.pt"
-            ]
-        }
-    },
     "metadata": {
         "stats_format_version": "0.3.0",
         "mlagents_version": "0.30.0",

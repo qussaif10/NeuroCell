@@ -13,7 +13,6 @@ namespace Managers
         public float speedFactor;
         public LayerMask layers;
         public GameObject target;
-        public LayerMask collisionLayers;
         public LayerMask repellableLayer;
 
         private Rigidbody2D _targetRigidbody;
@@ -31,7 +30,7 @@ namespace Managers
             _targetCollider2D = target.GetComponent<Collider2D>();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             Wander(_targetRigidbody, ref currentAngle, 0.25f, 2f);
             RepelObjects(gameObject, 0.1f, 0.3f);
@@ -92,6 +91,7 @@ namespace Managers
                 case CollidableType.RoughEr:
                     break;
                 case CollidableType.Wall:
+                    HandleWalls();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -109,6 +109,11 @@ namespace Managers
             }
 
             // EndEpisode();
+        }
+
+        private void HandleWalls()
+        {
+            EndEpisode();
         }
 
         private static Vector2 GetRandomTargetInCircle(float r)
@@ -130,20 +135,20 @@ namespace Managers
             
         }
         
-        private void Wander(Rigidbody2D rb, ref float currentAngle, float speed, float angleChangeRange)
+        private void Wander(Rigidbody2D rb, ref float currentAnglee, float speed, float angleChangeRange)
         {
-            if (rb.IsTouchingLayers() && !rb.IsTouchingLayers(collisionLayers))
+            if (rb.IsTouchingLayers() && !rb.IsTouchingLayers(LayerMask.NameToLayer("Organelle")))
             {
-                currentAngle += Random.Range(180, 200);
+                currentAnglee += 180;
             }
             else
             {
-                currentAngle += Random.Range(-angleChangeRange, angleChangeRange);
+                currentAnglee += Random.Range(-angleChangeRange, angleChangeRange);
             }
 
-            var angleInRadians = currentAngle * Mathf.Deg2Rad;
+            var angleInRadians = currentAnglee * Mathf.Deg2Rad;
             var direction = new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians)).normalized;
-            rb.velocity = direction * Random.Range(speed / 2, speed) * Time.deltaTime;
+            rb.velocity = direction * (speed * Time.deltaTime);
         }
 
 
