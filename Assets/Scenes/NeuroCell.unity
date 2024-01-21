@@ -2916,7 +2916,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 6000
-  speedFactor: 142.78
+  speedFactor: 170
   layers:
     serializedVersion: 2
     m_Bits: 72
@@ -2982,7 +2982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Record: 0
   NumStepsToRecord: 0
-  DemonstrationName: mbehdem
+  DemonstrationName: fastdem3
   DemonstrationDirectory: Demonstrations
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
