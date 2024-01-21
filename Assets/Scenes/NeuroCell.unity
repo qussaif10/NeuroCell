@@ -1459,8 +1459,8 @@ MonoBehaviour:
   numberOfPhospholipidsPerLayer: 83
   radius: 4.61
   layerDistance: 0.5
-  dampeningRatio0: 0
-  frequency0: 1
+  dampeningRatio0: 0.07
+  frequency0: 0.85
   dampeningRatio1: 0
   frequency1: 1
   dampeningRatio2: 0
@@ -2982,7 +2982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Record: 0
   NumStepsToRecord: 0
-  DemonstrationName: fastdem3
+  DemonstrationName: fastdem4
   DemonstrationDirectory: Demonstrations
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

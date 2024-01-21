@@ -24,7 +24,7 @@ behaviors:
         strength: 0.7
         demo_path: Demonstrations/fastdem3.demo
     behavioral_cloning:
-      strength: 0.7
+      strength: 1
       demo_path: Demonstrations/fastdem3.demo
     max_steps: 500000
     time_horizon: 64
