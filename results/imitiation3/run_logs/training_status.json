@@ -1,0 +1,29 @@
+{
+    "MoleculeBehaviour": {
+        "checkpoints": [
+            {
+                "steps": 3686,
+                "file_path": "results\\imitiation3\\MoleculeBehaviour\\MoleculeBehaviour-3686.onnx",
+                "reward": null,
+                "creation_time": 1705769896.00017,
+                "auxillary_file_paths": [
+                    "results\\imitiation3\\MoleculeBehaviour\\MoleculeBehaviour-3686.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 3686,
+            "file_path": "results\\imitiation3\\MoleculeBehaviour.onnx",
+            "reward": null,
+            "creation_time": 1705769896.00017,
+            "auxillary_file_paths": [
+                "results\\imitiation3\\MoleculeBehaviour\\MoleculeBehaviour-3686.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

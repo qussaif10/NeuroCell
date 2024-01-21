@@ -21,7 +21,8 @@ namespace Managers
         private Collider2D _collider2D;
         private float currentAngle;
         private Collider2D _targetCollider2D;
-        
+        private int tracker;
+
         private void Start()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -32,16 +33,16 @@ namespace Managers
 
         private void FixedUpdate()
         {
-            Wander(_targetRigidbody, ref currentAngle, 0.25f, 2f);
+            Wander(_targetRigidbody, ref currentAngle, 10f, 2f);
             RepelObjects(gameObject, 0.1f, 0.3f);
         }
 
         public override void OnEpisodeBegin()
         {
-            transform.position = GetRandomTargetInCircle(-3.86f);
+            transform.position = GetRandomTargetInBox(-8, -4, 8, 4);
             target.transform.position = GetRandomTargetInCircle(-3.86f);
         }
-        
+
         public override void CollectObservations(VectorSensor sensor)
         {
             var position = transform.localPosition;
@@ -49,14 +50,14 @@ namespace Managers
             sensor.AddObservation(new Vector2(position.x, position.y));
             sensor.AddObservation(new Vector2(targetPosition.x, targetPosition.y));
         }
-    
+
         public override void OnActionReceived(ActionBuffers actions)
         {
             var forceX = actions.ContinuousActions[0];
             var forceY = actions.ContinuousActions[1];
 
             var boost = _collider2D.IsTouchingLayers(layers) ? 6 : 1;
-            
+
             _rigidbody2D.AddForce(new Vector2(forceX, forceY) * Time.deltaTime * speedFactor * boost);
         }
 
@@ -113,6 +114,7 @@ namespace Managers
 
         private void HandleWalls()
         {
+            AddReward(-1f);
             EndEpisode();
         }
 
@@ -123,7 +125,7 @@ namespace Managers
             {
                 var randomPoint = Random.insideUnitCircle * r;
                 var collider = Physics2D.OverlapPoint(randomPoint);
-                
+
                 if (collider == null)
                 {
                     return randomPoint;
@@ -132,9 +134,8 @@ namespace Managers
 
             Debug.LogWarning("Could not find a non-overlapping point within 500 attempts, defaulting to origin.");
             return Vector2.zero;
-            
         }
-        
+
         private void Wander(Rigidbody2D rb, ref float currentAnglee, float speed, float angleChangeRange)
         {
             if (rb.IsTouchingLayers() && !rb.IsTouchingLayers(LayerMask.NameToLayer("Organelle")))
@@ -151,6 +152,13 @@ namespace Managers
             rb.velocity = direction * (speed * Time.deltaTime);
         }
 
+        private static Vector2 GetRandomTargetInBox(float xmin, float ymin, float xmax, float ymax)
+        {
+            var randomX = Random.Range(xmin, xmax);
+            var randomY = Random.Range(ymin, ymax);
+
+            return new Vector2(randomX, randomY);
+        }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
@@ -158,10 +166,11 @@ namespace Managers
             AddReward(1f);
             EndEpisode();
         }
-        
+
         private void RepelObjects(GameObject source, float repelRange, float repelForce)
         {
-            var hitColliders = Physics2D.OverlapCircleAll(source.transform.position, repelRange, repellableLayer); ;
+            var hitColliders = Physics2D.OverlapCircleAll(source.transform.position, repelRange, repellableLayer);
+            ;
             foreach (var hitCollider in hitColliders)
             {
                 var rb = hitCollider.GetComponent<Rigidbody2D>();

@@ -3,7 +3,7 @@ behaviors:
     trainer_type: ppo
     hyperparameters:
       batch_size: 10
-      buffer_size: 100
+      buffer_size: 150
       learning_rate: 3.0e-4
       beta: 5.0e-4
       epsilon: 0.2
@@ -20,6 +20,12 @@ behaviors:
       extrinsic:
         gamma: 0.99
         strength: 1.0
+      gail:
+        strength: 0.5
+        demo_path: Demonstrations/mbehdem.demo
+    behavioral_cloning:
+      strength: 0.7
+      demo_path: Demonstrations/mbehdem.demo
     max_steps: 500000
     time_horizon: 64
     summary_freq: 10000
