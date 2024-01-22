@@ -94,6 +94,8 @@ namespace Managers
                 case CollidableType.Wall:
                     HandleWalls();
                     break;
+                case CollidableType.Outside:
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -170,7 +172,7 @@ namespace Managers
         private void RepelObjects(GameObject source, float repelRange, float repelForce)
         {
             var hitColliders = Physics2D.OverlapCircleAll(source.transform.position, repelRange, repellableLayer);
-            ;
+            
             foreach (var hitCollider in hitColliders)
             {
                 var rb = hitCollider.GetComponent<Rigidbody2D>();
