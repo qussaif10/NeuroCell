@@ -8,13 +8,15 @@ namespace Managers
     public class MoleculeManager : Singleton<MoleculeManager>
     {
         public Molecule[] moleculeTemplatesArray;
-        public static readonly Dictionary<string, Molecule> _moleculeTemplatesDictionary = new();
-    
-        private void Start()
+        public Dictionary<string, Molecule> moleculeTemplatesDictionary = new();
+
+        protected override void Awake()
         {
+            base.Awake();
+            
             foreach (var moleculeTemplate in moleculeTemplatesArray)
             {
-                _moleculeTemplatesDictionary.Add(moleculeTemplate.moleculeType.ToString(), moleculeTemplate);
+                moleculeTemplatesDictionary.Add(moleculeTemplate.moleculeType.ToString(), moleculeTemplate);
             }
         }
 

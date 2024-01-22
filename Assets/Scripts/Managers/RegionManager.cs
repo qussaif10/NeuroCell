@@ -34,14 +34,15 @@ namespace Managers
                     return region.Key;
                 }
             }
+
             return Region.NoRegion;
         }
 
         public static Vector2 GetRandomPositionInRegion(Region region)
         {
-            if (regionCollidersDictionary.TryGetValue(region, out var collider))
+            if (regionCollidersDictionary.TryGetValue(region, out var collider2D))
             {
-                var bounds = collider.bounds;
+                var bounds = collider2D.bounds;
                 const int maxAttempts = 100;
                 for (var i = 0; i < maxAttempts; i++)
                 {
@@ -50,20 +51,19 @@ namespace Managers
                         Random.Range(bounds.min.y, bounds.max.y)
                     );
 
-                    if (collider.OverlapPoint(randomPosition))
+                    if (collider2D.OverlapPoint(randomPosition))
                     {
                         // Return the position in world space
                         return randomPosition;
                     }
                 }
-                Debug.LogWarning("Could not find a random position in region " + region + " within " + maxAttempts + " attempts. center position is given");
+
+                Debug.LogWarning("Could not find a random position in region " + region + " within " + maxAttempts +
+                                 " attempts. center position is given");
                 return bounds.center;
             }
-            else
-            {
-                Debug.LogError("No collider found for region " + region);
-            }
-
+            
+            Debug.LogError("No collider found for region " + region);
             return Vector2.zero;
         }
     }
@@ -77,6 +77,7 @@ namespace Managers
         EndoplasmicRough,
         EndoplasmicSmooth,
         GolgiIn,
-        GolgiOut
+        GolgiOut,
+        Outside
     }
 }

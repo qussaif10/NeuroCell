@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 namespace LogicManagers
 {
-    public abstract class OrganelleLogic : MonoBehaviour
+    public class OrganelleLogic : MonoBehaviour
     {
-
+         protected virtual int EnergyCount { get; set; }
     }
 }
