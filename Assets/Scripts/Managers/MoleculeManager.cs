@@ -30,14 +30,14 @@ namespace Managers
             return RegionManager.GetRegionOfMolecule(molecule);
         }
 
-        public void ConvertMolecule(GameObject molecule, Molecule type, float delay)
+        public void ConvertMolecule(GameObject molecule, Molecule type, float delay = 0)
         {
             var region = GetMoleculeRegion(molecule);
             Destroy(molecule);
             StartCoroutine(DelayedInstantiateMolecule(type, region, delay));
         }
         
-        public void ConvertMolecule(GameObject molecule, Molecule type, float delay, Region otherRegion)
+        public void ConvertMolecule(GameObject molecule, Molecule type, Region otherRegion, float delay = 0)
         {
             Destroy(molecule);
             StartCoroutine(DelayedInstantiateMolecule(type, otherRegion, delay));

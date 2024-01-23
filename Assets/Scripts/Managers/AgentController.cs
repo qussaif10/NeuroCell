@@ -20,6 +20,11 @@ namespace Managers
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _collider2D = GetComponent<Collider2D>();
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
             _targetCollider2D = Target.GetComponent<Collider2D>();
         }
 
@@ -36,9 +41,10 @@ namespace Managers
             var forceX = actions.ContinuousActions[0];
             var forceY = actions.ContinuousActions[1];
 
-            var boost = _collider2D.IsTouchingLayers(membraneLayers) ? 6 : 1;
+            var boost = _collider2D != null && _collider2D.IsTouchingLayers(membraneLayers) ? 6 : 1;
 
-            _rigidbody2D.AddForce(new Vector2(forceX, forceY) * Time.deltaTime * speedFactor * boost);
+            if (_rigidbody2D != null)
+                _rigidbody2D.AddForce(new Vector2(forceX, forceY) * Time.deltaTime * speedFactor * boost);
         }
 
         public override void Heuristic(in ActionBuffers actionsOut)

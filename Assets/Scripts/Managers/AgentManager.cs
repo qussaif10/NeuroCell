@@ -1,46 +1,32 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Managers
 {
     public class AgentManager : MonoBehaviour
     {
         public GameObject targetPrefab;
-        
-        private AgentController _agentController;
-        private State _currentState = State.Idle;
+        public Vector2 targetPosition;
 
-        private Vector2 _targetPosition;
+        public AgentController _agentController;
+        private State _currentState = State.Active;
 
-        private void Start()
+        private void Awake()
         {
-            _agentController = GetComponent<AgentController>();
-        }
-
-        private void Update()
-        {
-            switch (_currentState)
-            {
-                case State.Idle:
-                    DisableController();
-                    break;
-                case State.Active:
-                    EnableController();
-                    break;
-                default:
-                    _agentController.enabled = _agentController.enabled;
-                    break;
-            }
+            EnableController();
         }
 
         private void DisableController()
         {
             _agentController.enabled = false;
+            _agentController.Target = null;
         }
 
         private void EnableController()
         {
             _agentController.enabled = true;
-            // _agentController.Target
+            _agentController.Target = Instantiate(targetPrefab, targetPosition, Quaternion.identity);
         }
         private enum State
         {

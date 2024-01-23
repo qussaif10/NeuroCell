@@ -9,7 +9,7 @@ namespace Managers
         public GameObject[] regionsArray;
         private static Dictionary<Region, Collider2D> regionCollidersDictionary = new();
 
-        private void Start()
+        private void Awake()
         {
             var regionIndex = 1;
             foreach (var regionGameObject in regionsArray)
