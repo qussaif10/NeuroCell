@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Managers
 {
@@ -12,7 +10,7 @@ namespace Managers
         public AgentController _agentController;
         private State _currentState = State.Active;
 
-        private void Awake()
+        private void Start()
         {
             EnableController();
         }
@@ -25,8 +23,8 @@ namespace Managers
 
         private void EnableController()
         {
-            _agentController.enabled = true;
             _agentController.Target = Instantiate(targetPrefab, targetPosition, Quaternion.identity);
+            _agentController.enabled = true;
         }
         private enum State
         {

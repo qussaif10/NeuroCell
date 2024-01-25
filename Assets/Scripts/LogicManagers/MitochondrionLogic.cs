@@ -18,7 +18,7 @@ namespace LogicManagers
 
         private void Update()
         {
-            if (RegionManager.GetRegionOfMolecule(_molecule) == Region.Mitochondrion)
+            if (_molecule != null && RegionManager.GetRegionOfMolecule(_molecule) == Region.Mitochondrion)
             {
                 moleculeManager.ConvertMolecule(_molecule, moleculeManager.moleculeTemplatesDictionary["ATP"]);
             }
