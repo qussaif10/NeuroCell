@@ -18,6 +18,7 @@ namespace Collidables
         SmoothEr,
         RoughEr,
         Wall,
-        Outside
+        Outside,
+        Cytosol
     }
 }

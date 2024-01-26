@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8565813233283648735}
   - component: {fileID: 9075935953754224126}
   - component: {fileID: 6264329138535641247}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ribosome
   m_TagString: Ribosome
   m_Icon: {fileID: 0}

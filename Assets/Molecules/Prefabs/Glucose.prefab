@@ -222,7 +222,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 6000
-  speedFactor: 179.97
+  speedFactor: 189.35
   membraneLayers:
     serializedVersion: 2
     m_Bits: 72

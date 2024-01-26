@@ -13,6 +13,13 @@ namespace Managers
     {
         ATP,
         Ribosome,
-        Glucose
+        Glucose,
+        mRNA,
+        Hemoglobin,
+        ADP,
+        Cholesterol,
+        Oxygen,
+        CO2,
+        HO2
     }
 }

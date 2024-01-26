@@ -78,6 +78,7 @@ namespace Managers
         EndoplasmicSmooth,
         GolgiIn,
         GolgiOut,
-        Outside
+        Outside,
+        Cytosol
     }
 }
