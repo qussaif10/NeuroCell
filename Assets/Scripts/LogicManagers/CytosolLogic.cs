@@ -1,4 +1,5 @@
 using Managers;
+using MouseEvents;
 using UnityEngine;
 
 namespace LogicManagers
@@ -15,11 +16,14 @@ namespace LogicManagers
                 RegionManager.GetRandomPositionInRegion(Region.Mitochondrion);
         }
 
-        private void Update()
+        private async void Update()
         {
             if (_molecule != null && RegionManager.GetRegionOfMolecule(_molecule) == Region.Mitochondrion)
             {
-                moleculeManager.ConvertMolecule(_molecule, moleculeManager.moleculeTemplatesDictionary["ATP"]);
+                var moleculeTask = moleculeManager.ConvertMolecule(_molecule, moleculeManager.moleculeTemplatesDictionary["ATP"], 2f);
+                var newMolecule = await moleculeTask;
+                newMolecule.GetComponent<AgentManager>().targetPosition = RegionManager.GetRandomPositionInRegion(Region.Nucleus);
+                TrackRigidbody2D.Instance.selectedRigidbody = newMolecule.GetComponent<Rigidbody2D>();
             }
         }
     }

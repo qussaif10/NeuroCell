@@ -1,15 +1,17 @@
 using UnityEngine;
+using Tools;
+using UnityEngine.Serialization;
 
 namespace MouseEvents
 {
-    public class TrackRigidbody2D : MonoBehaviour
+    public class TrackRigidbody2D : Singleton<TrackRigidbody2D>
     {
         public float radius = 1.0f;
         public float zoomFactor = 2.0f;
         public float trackingSpeed = 5.0f;
         public float zoomSpeed = 5.0f;
+        public Rigidbody2D selectedRigidbody;
 
-        private Rigidbody2D _selectedRigidbody;
         private Camera _mainCamera;
         private float _lastClickTime;
         private float _doubleClickThreshold = 0.3f;
@@ -41,7 +43,7 @@ namespace MouseEvents
                     Rigidbody2D clickedRigidbody = FindNearestRigidbody(mousePosition);
                     if (clickedRigidbody != null)
                     {
-                        _selectedRigidbody = clickedRigidbody;
+                        selectedRigidbody = clickedRigidbody;
                         _isTracking = true;
                         _isZooming = true;
                         _targetOrthographicSize = _originalCameraSize / zoomFactor;
@@ -52,7 +54,7 @@ namespace MouseEvents
             if (Input.GetKeyDown(KeyCode.Escape) && _isTracking)
             {
                 _isTracking = false;
-                _selectedRigidbody = null;
+                selectedRigidbody = null;
                 _isZooming = true; // Start zooming out
                 _isResetting = true; // Start resetting the camera
             }
@@ -67,7 +69,7 @@ namespace MouseEvents
                 ResetCamera();
             }
 
-            if (_isTracking && _selectedRigidbody != null)
+            if (_isTracking && selectedRigidbody != null)
             {
                 TrackRigidbody();
             }
@@ -113,7 +115,7 @@ namespace MouseEvents
 
         private void TrackRigidbody()
         {
-            Vector3 targetPosition = _selectedRigidbody.transform.position;
+            Vector3 targetPosition = selectedRigidbody.transform.position;
             targetPosition.z = _mainCamera.transform.position.z;
             _mainCamera.transform.position = Vector3.Lerp(_mainCamera.transform.position, targetPosition, trackingSpeed * Time.deltaTime);
         }

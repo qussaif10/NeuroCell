@@ -70,7 +70,7 @@ namespace Managers
             rb.velocity = direction * (speed * Time.deltaTime);
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.GetComponent<Collider2D>() != _targetCollider2D) return;
             AddReward(1f);
