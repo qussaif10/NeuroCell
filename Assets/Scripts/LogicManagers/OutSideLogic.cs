@@ -29,5 +29,10 @@ namespace LogicManagers
             molecule.GetComponent<AgentManager>().targetPosition = RegionManager.GetRandomPositionInRegion(Region.Mitochondrion);
             return molecule;
         }
+
+        private void sendRequest()
+        {
+            
+        }
     }
 }

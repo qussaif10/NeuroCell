@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Tools;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Managers
 {
@@ -55,6 +56,19 @@ namespace Managers
             Destroy(moleculeObject);
             var newMolecule = InstantiateMolecule(type, region);
             tcs.SetResult(newMolecule);
+        }
+        
+        public void SendToOblivion(Rigidbody2D rb, float radius, float forceStrength)
+        {
+            var angle = Random.Range(0f, Mathf.PI * 2);
+        
+            var direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+        
+            var targetPosition = direction * radius;
+        
+            var forceDirection = (targetPosition - rb.position).normalized;
+        
+            rb.AddForce(forceDirection * forceStrength, ForceMode2D.Impulse);
         }
     }
 }

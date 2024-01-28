@@ -18,22 +18,21 @@ namespace LogicManagers
             EventManager.Instance.OnRequestMolecule += OnReceiveRequest;
         }
 
-        private void OnReceiveRequest(Molecule molecule, Region region, Action<Task<GameObject>> task)
+        private async void OnReceiveRequest(Molecule molecule, Region region, Action<Task<GameObject>> task)
         {
+            if (molecule.moleculeType != MoleculeType.mRNA) return;
+            if (_energyCount == 0)
+            {
+                var tcs = new TaskCompletionSource<GameObject>();
+                EventManager.Instance.RequestMolecule(MoleculeManager.Instance.moleculeTemplatesDictionary["ATP"],
+                    ThisRegion,
+                    async task => { tcs.SetResult(await task); });
+                var requestedMolecule = await tcs.Task;
+                requestedMolecule.GetComponent<AgentManager>().targetPosition = RegionManager.GetRandomPositionInRegion(ThisRegion);
+                StartCoroutine(WaitUntilMoleculeReached(requestedMolecule));
+            }
             
-        }
-
-        private async void Start()
-        {
-            var tcs = new TaskCompletionSource<GameObject>();
             
-            EventManager.Instance.RequestMolecule(MoleculeManager.Instance.moleculeTemplatesDictionary["ATP"],
-                ThisRegion,
-                 async task => { tcs.SetResult(await task); });
-            
-            var requestedMolecule = await tcs.Task;
-            requestedMolecule.GetComponent<AgentManager>().targetPosition = RegionManager.GetRandomPositionInRegion(ThisRegion);
-            StartCoroutine(WaitUntilMoleculeReached(requestedMolecule));
         }
 
         private IEnumerator DelayedDestroy(GameObject destroye, float delay)
@@ -46,8 +45,7 @@ namespace LogicManagers
         {
             yield return new WaitUntil(() => RegionManager.GetRegionOfMolecule(malecole) == ThisRegion);
             StartCoroutine(DelayedDestroy(_molecule, 1f));
-            _energyCount++;
-            Debug.Log(_energyCount);
+            _energyCount += 10;
         }
     }
 }

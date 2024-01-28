@@ -20,6 +20,8 @@ namespace Managers
         Cholesterol,
         Oxygen,
         CO2,
-        H2O
+        H2O,
+        UnprocessedHemoglobin,
+        UnprocessedCholesterol
     }
 }
