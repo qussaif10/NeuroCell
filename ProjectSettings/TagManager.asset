@@ -9,6 +9,13 @@ TagManager:
   - ATP
   - Glucose
   - Ribosome
+  - Hemoglobin
+  - H2O
+  - Cholesterol
+  - CO2
+  - mRNA
+  - Oxygen
+  - ADP
   layers:
   - Default
   - TransparentFX

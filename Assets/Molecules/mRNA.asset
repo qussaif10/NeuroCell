@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: mRNA
   m_EditorClassIdentifier: 
   moleculeType: 3
-  prefab: {fileID: 0}
+  prefab: {fileID: 6140920995178712089, guid: 8a78127b0d28150448d42d2582826291, type: 3}

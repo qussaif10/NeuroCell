@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cholesterol
   m_EditorClassIdentifier: 
   moleculeType: 6
-  prefab: {fileID: 0}
+  prefab: {fileID: 6664584527915671504, guid: 4ea1303e9b3e32c4998df504dbcf317b, type: 3}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2134e978c31ef24449d820270bba4a4d, type: 3}
-  m_Name: HO2
+  m_Name: H2O
   m_EditorClassIdentifier: 
   moleculeType: 9
-  prefab: {fileID: 0}
+  prefab: {fileID: 771194470033838648, guid: 30b35e860d111724791556638c5780f2, type: 3}

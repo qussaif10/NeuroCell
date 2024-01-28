@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Hemoglobin
   m_EditorClassIdentifier: 
   moleculeType: 4
-  prefab: {fileID: 0}
+  prefab: {fileID: 411976239081069759, guid: bbbaaf0f56ffb05469d3e627c827e744, type: 3}

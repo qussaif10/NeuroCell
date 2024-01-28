@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Threading.Tasks;
 using Managers;
 using Tools;
 using UnityEngine;
@@ -8,32 +8,45 @@ namespace LogicManagers
 {
     public class MitochondrionLogic : MonoBehaviour
     {
-        private readonly MoleculeManager _moleculeManager = MoleculeManager.Instance;
+        private const Region ThisRegion = Region.Mitochondrion;
         private GameObject _molecule;
 
-
-        private void Start()
+        private void Awake()
         {
             EventManager.Instance.OnRequestMolecule += OnReceiveRequest;
-            SendRequest();
         }
 
-        private void OnReceiveRequest(Molecule molecule, Region region, Action<GameObject> obj)
+        private void OnReceiveRequest(Molecule molecule, Region region, Action<Task<GameObject>> obj)
         {
             if (molecule.moleculeType != MoleculeType.ATP) return;
-            StartCoroutine(HandleRequest());
+            SendRequest();
+            obj?.Invoke(HandleRequest());
         }
 
-        private void SendRequest()
+        private async void SendRequest()
         {
-            EventManager.Instance.RequestMolecule(_moleculeManager.moleculeTemplatesDictionary["Glucose"],
-                Region.Mitochondrion, o => { _molecule = o; });
+            var tcs = new TaskCompletionSource<GameObject>();
+            
+            EventManager.Instance.RequestMolecule(MoleculeManager.Instance.moleculeTemplatesDictionary["Glucose"],
+                ThisRegion, async task => { tcs.SetResult(await task); });
+            
+            _molecule = await tcs.Task;
+            
         }
 
-        private IEnumerator HandleRequest()
+        private async Task<GameObject> HandleRequest()
         {
-            yield return new WaitUntil(() => Region.Mitochondrion == RegionManager.GetRegionOfMolecule(_molecule));
-            _moleculeManager.ConvertMolecule(_molecule, _moleculeManager.moleculeTemplatesDictionary["ATP"]);
+            while (RegionManager.GetRegionOfMolecule(_molecule) != ThisRegion)
+            {
+                await Task.Delay(10);
+            }
+            
+            if (ThisRegion == RegionManager.GetRegionOfMolecule(_molecule))
+            {
+                return await MoleculeManager.Instance.ConvertMolecule(_molecule, MoleculeManager.Instance.moleculeTemplatesDictionary["ATP"], 1);
+            }
+
+            return null;
         }
     }
 }

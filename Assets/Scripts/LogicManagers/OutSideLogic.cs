@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Threading.Tasks;
 using Managers;
 using Tools;
 using UnityEngine;
@@ -8,26 +8,26 @@ namespace LogicManagers
 {
     public class OutSideLogic : MonoBehaviour
     {
-        private readonly MoleculeManager _moleculeManager = MoleculeManager.Instance;
-        private void Start()
+        private const Region ThisRegion = Region.Outside;
+        private GameObject _molecule;
+
+        private void Awake()
         {
             EventManager.Instance.OnRequestMolecule += OnReceiveRequest;
         }
         
-        private void OnReceiveRequest(Molecule molecule, Region region, Action<GameObject> obj)
+        private void OnReceiveRequest(Molecule molecule, Region region, Action<Task<GameObject>> task)
         {
             if (molecule.moleculeType != MoleculeType.Glucose) return;
-            
-            var instantiatedMolecule = _moleculeManager.InstantiateMolecule(_moleculeManager.moleculeTemplatesDictionary["Glucose"], Region.Outside);
-            instantiatedMolecule.GetComponent<AgentManager>().targetPosition =
-                RegionManager.GetRandomPositionInRegion(region);
-            obj(instantiatedMolecule);
+            task?.Invoke(HandleRequest());
         }
         
-        private IEnumerator HandleRequest(GameObject molecule)
+        private async Task<GameObject> HandleRequest()
         {
-            yield return new WaitUntil(() => Region.Mitochondrion == RegionManager.GetRegionOfMolecule(molecule));
-            // _moleculeManager.ConvertMolecule()
+            var molecule =MoleculeManager.Instance.InstantiateMolecule(
+                MoleculeManager.Instance.moleculeTemplatesDictionary["Glucose"], ThisRegion);
+            molecule.GetComponent<AgentManager>().targetPosition = RegionManager.GetRandomPositionInRegion(Region.Mitochondrion);
+            return molecule;
         }
     }
 }

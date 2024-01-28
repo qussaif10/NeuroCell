@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CO2
   m_EditorClassIdentifier: 
   moleculeType: 8
-  prefab: {fileID: 0}
+  prefab: {fileID: 1920541830626932383, guid: a5f4b11601d2f2d4892492625df78398, type: 3}

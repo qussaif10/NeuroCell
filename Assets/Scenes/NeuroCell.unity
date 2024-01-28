@@ -1097,6 +1097,7 @@ GameObject:
   - component: {fileID: 534508408}
   - component: {fileID: 534508410}
   - component: {fileID: 534508411}
+  - component: {fileID: 534508412}
   m_Layer: 0
   m_Name: LogicHandlers
   m_TagString: Untagged
@@ -1155,6 +1156,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679957169b0743859eaa95d08243e911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &534508412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534508407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089c215de2ec403e92d1dedf4ac5dbde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &659547108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,6 +1202,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 151f0e27d9770f5bea163505477a1dbc, type: 2}
   - {fileID: 11400000, guid: dfabc5e4afb2f0b48a90b5fa0a9b3da0, type: 2}
   - {fileID: 11400000, guid: e233c47bb6a570b418c71a29fa46ff74, type: 2}
+  - {fileID: 11400000, guid: 775a4bc56a24b3a4ba3574221f91bcea, type: 2}
+  - {fileID: 11400000, guid: 914d42426bf9e344c90f3e3101256c45, type: 2}
+  - {fileID: 11400000, guid: 1fa563aaf1d3d874398c3b11424f204a, type: 2}
+  - {fileID: 11400000, guid: be69c5d2ca3afb4489616d44317501c8, type: 2}
+  - {fileID: 11400000, guid: 32ad28787016a7343b44293e6aa79c80, type: 2}
+  - {fileID: 11400000, guid: b6e61ba413507b743b44b60a0ce31938, type: 2}
 --- !u!4 &659547110
 Transform:
   m_ObjectHideFlags: 0

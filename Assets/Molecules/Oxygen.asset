@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Oxygen
   m_EditorClassIdentifier: 
   moleculeType: 7
-  prefab: {fileID: 0}
+  prefab: {fileID: 2549769300026703573, guid: 3197001c4cb07a54c9fee4c54b4096e2, type: 3}

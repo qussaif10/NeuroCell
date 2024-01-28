@@ -29,12 +29,12 @@ namespace Managers
         {
             foreach (var region in regionCollidersDictionary)
             {
-                if (obj.GetComponent<Collider2D>().IsTouching(region.Value))
+                if (obj != null && obj.GetComponent<Collider2D>().IsTouching(region.Value))
                 {
                     return region.Key;
                 }
             }
-
+            
             return Region.NoRegion;
         }
 

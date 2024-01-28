@@ -20,6 +20,6 @@ namespace Managers
         Cholesterol,
         Oxygen,
         CO2,
-        HO2
+        H2O
     }
 }
