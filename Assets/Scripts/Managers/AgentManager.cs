@@ -1,3 +1,6 @@
+using System;
+using System.Threading.Tasks;
+using Tools;
 using UnityEngine;
 
 namespace Managers
@@ -10,11 +13,20 @@ namespace Managers
         public AgentController _agentController;
         private State _currentState = State.Active;
 
-        private void Start()
+        private void Awake()
         {
+            EventManager.Instance.OnGetMolecule += OnGetMolecule;
             EnableController();
         }
 
+        private void OnGetMolecule(Molecule molecule, Action<Task<GameObject>> moleculeObject)
+        {
+            if (!gameObject.CompareTag(molecule.moleculeType.ToString()))
+            {
+                return;
+            }
+            moleculeObject?.Invoke(Task.FromResult(gameObject));
+        }
         private void DisableController()
         {
             _agentController.enabled = false;

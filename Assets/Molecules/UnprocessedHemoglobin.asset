@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: UnprocessedHemoglobin
   m_EditorClassIdentifier: 
   moleculeType: 10
-  prefab: {fileID: 0}
+  prefab: {fileID: 6495502401111955943, guid: 794d969583fe5ba4f85ff76e68fe8620, type: 3}

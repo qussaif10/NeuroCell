@@ -16,6 +16,8 @@ TagManager:
   - mRNA
   - Oxygen
   - ADP
+  - UnprocessedHemoglobin
+  - UnprocessedCholesterol
   layers:
   - Default
   - TransparentFX
