@@ -2,16 +2,26 @@ using System;
 using System.Threading.Tasks;
 using Tools;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Managers
 {
     public class AgentManager : MonoBehaviour
     {
         public GameObject targetPrefab;
-        public Vector2 targetPosition;
+        private Vector2 _targetPosition;
+        public Vector2 TargetPosition
+        {
+            set
+            {
+                _targetPosition = value;
+                _agentController.Target.transform.position = TargetPosition;
+            }
+            get => _targetPosition;
+        }
 
         public AgentController _agentController;
-        private State _currentState = State.Active;
+        public State currentState = State.Active;
 
         private void Awake()
         {
@@ -35,10 +45,10 @@ namespace Managers
 
         private void EnableController()
         {
-            _agentController.Target = Instantiate(targetPrefab, targetPosition, Quaternion.identity);
+            _agentController.Target = Instantiate(targetPrefab, _targetPosition, Quaternion.identity);
             _agentController.enabled = true;
         }
-        private enum State
+        public enum State
         {
             Idle,
             Active
