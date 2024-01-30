@@ -7,11 +7,11 @@ namespace Tools
 {
     public class EventManager : Singleton<EventManager>
     {
-        public event Action<Molecule, Region, Action<Task<GameObject>>> OnRequestMolecule;
+        public event Action<Molecule, Action<Task<GameObject>>> OnGetMolecule;
 
-        public void RequestMolecule(Molecule molecule, Region region, Action<Task<GameObject>> task)
+        public void GetMolecule(Molecule molecule, Action<Task<GameObject>> moleculeObject)
         {
-            OnRequestMolecule?.Invoke(molecule, region, task);
+            OnGetMolecule?.Invoke(molecule, moleculeObject);
         }
     }
 }

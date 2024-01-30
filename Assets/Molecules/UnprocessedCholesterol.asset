@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2134e978c31ef24449d820270bba4a4d, type: 3}
   m_Name: UnprocessedCholesterol
   m_EditorClassIdentifier: 
-  moleculeType: 0
-  prefab: {fileID: 0}
+  moleculeType: 11
+  prefab: {fileID: 8604050354281916265, guid: 137d1cf5cf339af4c933f0786702ee09, type: 3}
