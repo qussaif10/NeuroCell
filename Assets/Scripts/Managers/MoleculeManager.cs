@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -58,13 +57,21 @@ namespace Managers
             tcs.SetResult(newMolecule);
         }
         
-        public void SendToOblivion(Rigidbody2D rb, float radius, float forceStrength)
+        public IEnumerator SendToOblivion(Rigidbody2D rb, float radius, float forceStrength)
         {
+            Vector2 startPosition = rb.position;
             var angle = Random.Range(0f, Mathf.PI * 2);
             var direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-            var targetPosition = direction * radius;
-            var forceDirection = (targetPosition - rb.position).normalized;
-            rb.AddForce(forceDirection * forceStrength, ForceMode2D.Impulse);
+            rb.gameObject.GetComponent<AgentManager>().DisableController();
+
+            while ((rb.position - startPosition).magnitude < radius)
+            {
+                var forceDirection = direction;
+                rb.AddForce(forceDirection * forceStrength, ForceMode2D.Impulse);
+
+                // Wait for the next physics update
+                yield return new WaitForFixedUpdate();
+            }
         }
     }
 }

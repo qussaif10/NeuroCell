@@ -1,6 +1,5 @@
 using UnityEngine;
 using Tools;
-using UnityEngine.Serialization;
 
 namespace MouseEvents
 {
@@ -11,13 +10,13 @@ namespace MouseEvents
         public float trackingSpeed = 5.0f;
         public float zoomSpeed = 5.0f;
         public Rigidbody2D selectedRigidbody;
+        public bool isTracking = false;
 
         private Camera _mainCamera;
         private float _lastClickTime;
         private float _doubleClickThreshold = 0.3f;
         private Vector3 _originalCameraPosition;
         private float _originalCameraSize;
-        private bool _isTracking = false;
         private bool _isZooming = false;
         private bool _isResetting = false;
         private float _targetOrthographicSize;
@@ -44,16 +43,17 @@ namespace MouseEvents
                     if (clickedRigidbody != null)
                     {
                         selectedRigidbody = clickedRigidbody;
-                        _isTracking = true;
+                        PanelController.Instance.EnablePanel(selectedRigidbody);
+                        isTracking = true;
                         _isZooming = true;
                         _targetOrthographicSize = _originalCameraSize / zoomFactor;
                     }
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape) && _isTracking)
+            if (Input.GetKeyDown(KeyCode.Escape) && isTracking)
             {
-                _isTracking = false;
+                isTracking = false;
                 selectedRigidbody = null;
                 _isZooming = true; // Start zooming out
                 _isResetting = true; // Start resetting the camera
@@ -69,7 +69,7 @@ namespace MouseEvents
                 ResetCamera();
             }
 
-            if (_isTracking && selectedRigidbody != null)
+            if (isTracking && selectedRigidbody != null)
             {
                 TrackRigidbody();
             }
@@ -83,6 +83,11 @@ namespace MouseEvents
 
             foreach (var collider in colliders)
             {
+                if (collider.gameObject.CompareTag("target"))
+                {
+                    continue;
+                }
+
                 Rigidbody2D rb = collider.attachedRigidbody;
                 if (rb != null)
                 {
@@ -98,15 +103,16 @@ namespace MouseEvents
             return nearestRigidbody;
         }
 
+
         private void AnimateCameraZoom()
         {
-            float targetSize = _isTracking ? _targetOrthographicSize : _originalCameraSize;
+            float targetSize = isTracking ? _targetOrthographicSize : _originalCameraSize;
             _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, targetSize, zoomSpeed * Time.deltaTime);
 
             if (Mathf.Abs(_mainCamera.orthographicSize - targetSize) < 0.01f)
             {
                 _isZooming = false;
-                if (!_isTracking)
+                if (!isTracking)
                 {
                     _isResetting = true;
                 }

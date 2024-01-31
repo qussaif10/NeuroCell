@@ -22,6 +22,9 @@ namespace Managers
         CO2,
         H2O,
         UnprocessedHemoglobin,
-        UnprocessedCholesterol
+        UnprocessedCholesterol,
+        Triglyceride,
+        Insulin,
+        preproinsulin
     }
 }
