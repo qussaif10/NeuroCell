@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using Tools;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Managers
 {
@@ -16,6 +15,10 @@ namespace Managers
             {
                 _targetPosition = value;
                 _agentController.Target.transform.position = TargetPosition;
+                if (!_agentController.enabled)
+                {
+                    EnableController();
+                }
             }
             get => _targetPosition;
         }
@@ -37,7 +40,7 @@ namespace Managers
             }
             moleculeObject?.Invoke(Task.FromResult(gameObject));
         }
-        private void DisableController()
+        public void DisableController()
         {
             _agentController.enabled = false;
             _agentController.Target = null;

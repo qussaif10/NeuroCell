@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 94169214444953826}
   m_Layer: 9
   m_Name: mRNA
-  m_TagString: H2O
+  m_TagString: mRNA
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,5 +268,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 5186555703201949893, guid: 7bd752a306ad7f3408af0d8557179b0e, type: 3}
-  targetPosition: {x: 0, y: 0}
   _agentController: {fileID: 1455496416672192787}
+  currentState: 1

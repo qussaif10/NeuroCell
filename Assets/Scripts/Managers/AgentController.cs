@@ -31,7 +31,10 @@ namespace Managers
         public override void CollectObservations(VectorSensor sensor)
         {
             var position = transform.localPosition;
-            var targetPosition = Target.transform.localPosition;
+            Vector3 targetPosition;
+            
+            targetPosition = Target != null ? Target.transform.localPosition : Vector3.zero;
+            
             sensor.AddObservation(new Vector2(position.x, position.y));
             sensor.AddObservation(new Vector2(targetPosition.x, targetPosition.y));
         }

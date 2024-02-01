@@ -18,6 +18,10 @@ TagManager:
   - ADP
   - UnprocessedHemoglobin
   - UnprocessedCholesterol
+  - Insulin
+  - preproinsulin
+  - Triglyceride
+  - target
   layers:
   - Default
   - TransparentFX
