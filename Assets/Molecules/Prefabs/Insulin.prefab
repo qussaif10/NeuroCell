@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c811c50b628cd1fb5bf547f4b54496d8, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.3063813, g: 0.5876444, b: 0.8018868, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1205466327486330037}
   zoomedInSprite: {fileID: 21300000, guid: c811c50b628cd1fb5bf547f4b54496d8, type: 3}
-  zoomedOutSprite: {fileID: 21300000, guid: 7b0f5dcab4f2c1949b3976aaef14e76e, type: 3}
+  zoomedOutSprite: {fileID: 21300000, guid: b8d97087561f18e4f96d213c0f06ab92, type: 3}
   mainCamera: {fileID: 0}
   collader2D: {fileID: 6952889122638884535}
   zoomThreshold: 1.36

@@ -38,13 +38,15 @@ namespace LogicManagers
                     Destroy(glucose);
                 }
 
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(Random.Range(0.5f, 1f));
             }
 
             yield return coroutines[0];
             yield return coroutines[1];
             yield return coroutines[2];
 
+            yield return new WaitForSeconds(Random.Range(1f, 3f));
+            
             var mRNA = MoleculeManager.Instance.InstantiateMolecule(
                 MoleculeManager.Instance.moleculeTemplatesDictionary["mRNA"], Region.Nucleus);
             mRNA.GetComponent<AgentManager>().TargetPosition =
@@ -73,7 +75,7 @@ namespace LogicManagers
             yield return new WaitUntil(() => RegionManager.GetRegionOfMolecule(preproinsulin) == Region.GolgiIn);
 
             var task1 = MoleculeManager.Instance.ConvertMolecule(preproinsulin,
-                MoleculeManager.Instance.moleculeTemplatesDictionary["Insulin"], Region.GolgiOut);
+                MoleculeManager.Instance.moleculeTemplatesDictionary["Insulin"], Region.GolgiOut, Random.Range(0.5f, 2f));
 
             yield return new WaitUntil(() => task1.IsCompleted);
 
@@ -100,7 +102,7 @@ namespace LogicManagers
                 MoleculeManager.Instance.InstantiateMolecule(
                     MoleculeManager.Instance.moleculeTemplatesDictionary["Triglyceride"], Region.GolgiOut);
 
-            StartCoroutine(MoleculeManager.Instance.SendToOblivion(triglyceride2.GetComponent<Rigidbody2D>(), 50, 0.02f));
+            StartCoroutine(MoleculeManager.Instance.SendToOblivion(triglyceride2.GetComponent<Rigidbody2D>(), 50, 0.1f));
         }
         
         private IEnumerator WaitForAdp(GameObject adp)
@@ -116,7 +118,7 @@ namespace LogicManagers
             yield return new WaitUntil(() => RegionManager.GetRegionOfMolecule(atp) == targetRegion);
 
             var task = MoleculeManager.Instance.ConvertMolecule(atp,
-                MoleculeManager.Instance.moleculeTemplatesDictionary["ADP"]);
+                MoleculeManager.Instance.moleculeTemplatesDictionary["ADP"], Random.Range(0.25f, 1f));
 
             yield return new WaitUntil(() => task.IsCompleted);
 

@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 33935ce5dd90bbf4ba90dac33bd1c52a, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.8396226, g: 0.6325126, b: 0.33664113, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 9181003578781864491}
   zoomedInSprite: {fileID: 21300000, guid: 33935ce5dd90bbf4ba90dac33bd1c52a, type: 3}
-  zoomedOutSprite: {fileID: 21300000, guid: 7b0f5dcab4f2c1949b3976aaef14e76e, type: 3}
+  zoomedOutSprite: {fileID: 21300000, guid: b8d97087561f18e4f96d213c0f06ab92, type: 3}
   mainCamera: {fileID: 0}
   collader2D: {fileID: 5631222440964603484}
   zoomThreshold: 1.36
@@ -268,5 +268,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 5186555703201949893, guid: 7bd752a306ad7f3408af0d8557179b0e, type: 3}
-  targetPosition: {x: 0, y: 0}
   _agentController: {fileID: 4708152576930380790}
+  currentState: 1
